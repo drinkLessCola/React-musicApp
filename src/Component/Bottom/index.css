@@ -1,0 +1,87 @@
+
+.Bottom{
+  height:7rem;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+  flex-shrink:0;
+}
+.SongInfo{
+  padding:1rem;
+  display:flex;
+  width:300px;
+  /* background-color: aquamarine; */
+}
+.SongImage-image{
+  width:5rem;
+  height:5rem;
+  border-radius:.5rem;
+}
+.SongName{
+  flex:0 1 160px;
+  padding:0 1rem;
+  color:#333;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow:clip; 
+}
+
+.SongName-name{
+  display:flex;
+  flex-direction:row;
+  font-size:1.6rem;
+  margin-bottom:.2rem;
+}
+.SongName-singer{
+  font-size: 1.2rem;
+}
+
+.Like{
+  width:2rem;
+  height:2rem;
+  margin-left:.5rem;
+}
+
+/* 播放器 */
+.Player{
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+  align-items:center;
+  justify-content:space-around;
+  
+}
+.Player-mode{
+  width:1.5rem;
+  height:1.5rem;
+  /* background-color: aqua; */
+  margin-right:2rem;
+  cursor:pointer;
+}
+.Player-btns, .Player-btns ul{
+  display:flex;
+  align-items:center;
+}
+.Player-btn{
+  margin:0 1.4rem;
+  cursor: pointer;
+}
+/* svg 下方也会有间隙，需要设置 vertical-align */
+.Player-btn .icon{
+  width:1.8rem;
+  height:1.8rem;
+  vertical-align:top;
+}
+
+
+.play-icon{
+  padding:1rem;
+  border-radius:50%;
+  box-sizing:content-box;
+  background-color:#eee;
+}

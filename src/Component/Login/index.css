@@ -1,0 +1,176 @@
+.Login{
+  width:var(--login-width);
+  height:var(--login-height);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* 水平垂直居中 */
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  /* 层叠顺序处于最前面 */
+  z-index:100;
+  background-color:#fff;
+  padding:1rem 0;
+}
+.Login-shadow{
+  width:var(--login-width);
+  height:var(--login-height);
+
+  /* 水平垂直居中 */
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  /* 设置阴影颜色 */
+  box-shadow:0 0 8px 3px #cfcfcf;
+  /* 设置正片叠底 */
+  mix-blend-mode: multiply;
+  z-index:1;
+  padding:1rem 0;
+}
+
+.Login-form{
+  width:100%;
+  background-color: #fff;
+  padding:0 3rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.Login-input{
+  width:100%;
+  position: relative;
+  border:1px solid #ddd;
+  border-radius: 5px;
+}
+.tr{
+  display: flex;
+  align-items: center;
+  color:#666;
+  font-size: 1.2rem;
+}
+
+.Login-form .tr:nth-of-type(1){
+  border-bottom: 1px solid #ddd;
+}
+
+select{
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  color:#555;
+  font-size: 1rem;
+  padding:1rem 2rem;
+}
+
+.Login .register{
+  color:#333;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  margin:1rem 0;
+}
+.Login a{
+  color:rosybrown;
+}
+.Login button{
+  background-color: #ea4848;
+  color:#fff;
+  width:100%;
+  border-radius:.5rem;
+  padding:1rem 0;
+  font-size: 1.5rem;
+  letter-spacing: .5rem;
+}
+.Login button:hover{
+  background-color: #c72e2e;
+  cursor:pointer;
+}
+.Login-img{
+  width:100%;
+  padding:1rem 3rem;
+  box-sizing: border-box;
+}
+.Login-img img{
+  width:100%;
+}
+.Login-form input{
+  font-size: 1.2rem;
+  color:#333;
+  padding:1rem 0;
+}
+/* checkbox */
+input[type='checkbox']{
+  display: inline-block;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position:relative;
+  border: 1px solid #ccc;
+  width:1.2rem;
+  height:1.2rem;
+  padding:0;
+  margin:1.5rem .8rem 1.5rem 0;
+  border-radius:2px;
+}
+input[type=checkbox]:checked{
+  background-color: #ea4848;
+  border:1px solid #ea4848;
+  text-align: center;
+
+}
+input[type=checkbox]:checked:after{
+  content:'';
+  position: absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background: url('../../imgs/checked.png') no-repeat center center;
+  background-size:100% 100%;
+}
+/* input placeholder 字体颜色 */
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #aaa;
+  font-weight:normal;
+  font-size: 1.2rem;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #aaa;
+  font-weight:normal;
+  font-size: 1.2rem;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #aaa;
+  font-weight:normal;
+  font-size: 1.2rem;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #aaa;
+  font-weight:normal;
+  font-size: 1.2rem;
+}
+
+.addRightBorder{
+  border-right:1px solid #ddd;
+}
+.Login input[type='tel']{
+  font-family:Helvetica;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.Login input[type='tel'], .Login input[type='password']{
+  width:100%;
+}
+
+.logining{
+  background-color: #888;
+  cursor:not-allowed;
+}

@@ -1,0 +1,17 @@
+.Header{
+  display:flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.Search{
+  background-color:#eee;
+  padding:.8rem 1.5rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  margin:0 2rem;
+}
+
+.Search .icon{
+  width:1.4rem;
+}

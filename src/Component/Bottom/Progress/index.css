@@ -1,0 +1,44 @@
+.Progress{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.Progress-slider{
+  height:.3rem;
+  width:350px;
+  background-color:#ccc;
+  border-radius:2rem;
+  margin:0 1rem;
+
+}
+.Progress span{
+  color:#aaa;
+}
+.Progress-slider-bar{
+  position:relative;
+  width:var(--progress-bar-width);
+  height:inherit;
+  background-color: var(--btn-color);
+  border-radius: 5px;
+}
+
+.Progress-slider-hover{
+  height:.5rem;
+}
+
+.Progress-slider-top{
+  width:10px;
+  height:11px;
+  border-radius: 50%;
+  background-color: var(--btn-color);
+  position:absolute;
+  right:0;
+  /* 不能使用 margin 子元素大于父元素 */
+  top:50%;
+  transform: translate(50%,-50%);
+  display:none;
+}
+
+.Progress-slider-hover .Progress-slider-top{
+  display:block;
+}

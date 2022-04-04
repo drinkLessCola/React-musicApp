@@ -1,0 +1,36 @@
+/* 侧边栏相关样式 */
+.SideBar{
+  flex:0 0 200px;
+  overflow: auto;
+  width:200px;
+  background-color:#fefefe;
+  padding:1rem;
+  box-sizing:border-box;
+}
+.SideBar-unit{
+  width:100%;
+}
+.title{
+  font-size:1.3rem;
+  color:#aaa;
+  margin:1rem 0;
+  padding:0 .5rem;
+}
+.list-item{
+  display:flex;
+  line-height:3.5rem;
+  padding:0 .5rem;
+/*   background-color:red; */
+  border-radius:1rem;
+  height:3.5rem;
+  color:#333;
+  font-size:1.4rem;
+  cursor:pointer;
+}
+.list-item:hover{
+  background-color:#efefef;
+}
+.list-item .icon{
+  width:2rem;
+  margin-right:.8rem;
+}

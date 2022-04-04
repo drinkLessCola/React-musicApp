@@ -1,0 +1,67 @@
+
+.PlayListBoard{
+  box-sizing: border-box;
+  width:400px;
+  height:100%;
+  position: absolute;
+  background-color: #fff;
+  bottom:0;
+  right:0;
+}
+.PlayListBoard h1{
+  margin-bottom:1rem;
+}
+.PlayListBoard-header{
+  display:flex;
+  flex-direction: column;
+  padding:2rem;
+  border-bottom:1px solid #eee;
+}
+.PlayListBoard-info{
+  display: flex;
+  justify-content: space-between;
+}
+.PlayListBoard button{
+  background-color: #fff;
+  color:#333;
+  font-size: 1.3rem;
+
+}
+.PlayListBoard button:nth-of-type(2){
+  color:#507daf;
+}
+.PlayListBoard span{
+  color:#ccc;
+}
+.PlayListBoard-main{
+  overflow: hidden;
+  font-size:1rem;
+  cursor: default;
+  box-sizing: border-box;
+}
+.PlayListBoard-name{
+  flex:0 1 200px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+.PlayListBoard-artists{
+  flex:0 1 80px;
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+  overflow: hidden; 
+}
+.PlayListBoard tBody tr{
+  width:400px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.PlayListBoard tBody td{
+  padding:0 2rem;
+}
+.PlayListBoard tBody tr:nth-child(even){
+  background-color:#f9f9f9;
+}
+
+

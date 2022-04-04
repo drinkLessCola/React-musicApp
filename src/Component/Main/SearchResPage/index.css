@@ -1,0 +1,42 @@
+.SearchResPage{
+  flex-grow:0;
+  flex-shrink:1;
+  display: flex;
+  width:100%;
+  flex-direction: column;
+  /* background-color: aquamarine; */
+  overflow: auto;
+  max-height:100%;
+  padding:2rem 3rem;
+  color:#333;
+  box-sizing: border-box;
+}
+.SearchResPage h1{
+  margin-bottom:2rem;
+}
+.SearchResPage ul{
+  display: flex;
+}
+.SearchResPage ul li{
+  position:relative;
+  /* background-color: coral; */
+  padding:1rem;
+  margin:0 1rem 0 0;
+  font-size: 1.5rem;
+}
+.SearchResPage ul li .active{
+  font-weight: bold;
+}
+.SearchResPage ul li .active:after{
+  content:'';
+  position: absolute;
+  width:50%;
+  height:2px;
+  background-color:var(--btn-color);
+  bottom:0;
+  left:0;
+  right:0;
+  margin:0 auto;
+  border-radius:1rem;
+}
+

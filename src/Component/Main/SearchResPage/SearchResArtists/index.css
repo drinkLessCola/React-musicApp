@@ -1,0 +1,35 @@
+.SearchResArtists {
+  display:flex;
+  flex-direction:column;
+}
+.SearchResArtists tBody tr{
+  position: relative;
+  padding:2.5rem;
+  display: flex;
+  align-items: center;
+  color:#555;
+}
+.SearchResArtists .artistAvatar{
+  position: relative;
+  width:60px;
+  margin-right: 1rem;
+  border:1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding:0;
+  overflow: hidden;
+}
+.SearchResArtists .artistAvatar img{
+  width:60px;
+  height:60px;
+  display:block;
+  object-fit: cover;
+}
+
+
+
+.SearchResArtists tBody tr:nth-child(even){
+  background-color:#f9f9f9;
+ }
+ 
+ 

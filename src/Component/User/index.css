@@ -1,0 +1,19 @@
+.User{
+  height:inherit;
+  display:flex;
+  align-items: center;
+}
+
+.User-avatar{
+  height:60%;
+  border-radius:50%;
+  overflow: hidden;
+  border:1px solid #bbb;
+  margin:0 .5rem;
+  box-sizing: border-box;
+}
+
+.User-avatar img{
+  height:100%;
+  display: block;
+}

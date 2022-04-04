@@ -1,0 +1,121 @@
+
+.Func{
+  /* background-color: aquamarine; */
+  display: flex;
+  width:250px;
+  /* background-color: coral; */
+  justify-content: flex-end;
+}
+.Func li{
+  margin: 0 .5rem;
+  padding:.3rem;
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+.Func li:hover > .icon path{
+  fill:#333;
+  transition:all .5s ease-in-out;
+}
+.Func .icon{
+  width:2.3rem;
+}
+.PlayListBorad{
+
+}
+
+/* margin 百分比相对于父元素的宽度！  */
+.soundController{
+  display:none;
+  justify-content: center;
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:0 auto;
+  margin-bottom:calc(100% + 10px);
+  padding-bottom:10px;
+  width:30px;
+  height:90px;
+  background-color: #fff;
+  box-shadow:#dfdfdf 0 0 .8rem 0rem;
+  border-radius: .5rem;
+  cursor:default;
+  z-index:5;
+}
+.soundController::before{
+  content: '';
+  position: absolute;
+  border-top: 10px solid #eee;
+  border-bottom: 10px solid transparent;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent ;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:0 auto;
+  margin-bottom:-22px;
+  width:0;
+  height:0;
+  filter:blur(.2rem);
+}
+.soundController::after{
+  content: '';
+  position: absolute;
+  border-top: 10px solid #fff;
+  border-bottom:10px solid transparent;
+  border-left:6px solid transparent;
+  border-right:6px solid transparent ;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:0 auto;
+  margin-bottom:-20px;
+  width:0;
+  height:0;
+
+}
+/* 通过 margin-right 可以使 flex 的子元素重叠 */
+.soundController-bar-bg{
+  width:4px;
+  height:70px;
+  margin-right:-4px;
+  border-radius: .5rem;
+  background-color:#ddd;
+}
+.soundController-bar{
+  position:relative;
+  height:var(--sound-bar-height);
+  width:4px;
+  background-color: aquamarine;
+  border-radius: .5rem;
+  text-align:center;
+}
+.soundController-bar-top{
+  position: absolute;
+  width:11px;
+  height:9px;
+  top:0;
+  left:0;
+  right:0;
+  /* 奇怪的技巧！父元素要设置 text-align:center; */
+  margin:0 -100%;
+  transform:translateY(-50%);
+  border-radius: 50%;
+  background-color: var(--btn-color);
+}
+
+.soundController-bar-body{
+  width:4px;
+  height:inherit;
+  border-radius: .5rem;
+  background-color: var(--btn-color);
+}
+
+
+
+.Sound:hover > .soundController{
+  display: flex;
+  align-items: flex-end;
+}
+
