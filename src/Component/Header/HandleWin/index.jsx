@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class index extends Component {
-  render() {
-    return (
-      <div>index</div>
-    )
-  }
+export default function HandleWin() {
+  return (
+    <div>HandleWin</div>
+  )
 }

@@ -5,12 +5,12 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import App from './App';
 import store from './Redux/store';
-
+// BrowserRouter 出错啦
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+  <BrowserRouter>
     <Provider store={store}>
-      <App/>
+        <App/>
     </Provider>
     </BrowserRouter>
   </React.StrictMode>,

@@ -1,45 +1,53 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { getMvAction } from '../../../../Redux/searchActions';
 import './index.css';
-class SearchResVideos extends Component {
+function SearchResVideos(props) {
+  const navigate = useNavigate();
 
-  timeFormat(time) {
+  function timeFormat(time) {
     time /= 1000;
     let min = Math.floor(time / 60),
       sec = time % 60;
     return ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
   }
-  watchVideo = (e) =>{
-    const vid = e.target.closest('.video').id;
-    this.props.history.puah('')
+  function watchVideo(e) {
+    const video = e.target.closest('.video');
+    const vid = video.id;
+    const duration = video.dataset.duration;
+    console.log(vid);
+    props.getMV(vid, duration);
+    navigate(`/mv?vid=${vid}`);
   }
-  render() {
-    let { videos } = this.props;
-    videos = videos || [];
-    console.log('Resvideos', videos, videos.length);
-    return (
-      <div className='SearchResVideos'>
-        {videos.length ?
-          videos.map(v => (
-            <div className='video' key={v.vid} id={v.vid}>
-              <div className='video-cover' onClick={this.watchVideo}>
-                <img src={v.coverUrl}></img>
-              </div>
-              <div className='video-info'>
+
+  let { videos } = props;
+  videos = videos || [];
+  console.log('Resvideos', videos, videos.length);
+  return (
+    <div className='SearchResVideos'>
+      {videos.length ?
+        videos.map(v => (
+          <div className='video' key={v.vid} id={v.vid} data-duration={v.durationms}>
+            <div className='video-cover' onClick={watchVideo}>
+              <img src={v.coverUrl}></img>
+            </div>
+            <div className='video-info'>
               <div className='video-title'>{v.title}</div>
               <div className='video-creator'>{v.creator.map(c => <span id={c.userId}>{c.userName}</span>)}</div>
-              </div>
             </div>
-          ))
-          :
-          <div>加载中...</div>}
-      </div>
-    )
-  }
+          </div>
+        ))
+        :
+        <div>加载中...</div>}
+    </div>
+  )
 }
 
-export default withRouter(connect(
-  state => ({videos:state.videos}),
-  {}
-)(SearchResVideos));
+
+export default connect(
+  state => ({ videos: state.videos }),
+  {
+    getMV: getMvAction,
+  }
+)(SearchResVideos);

@@ -1,0 +1,88 @@
+.VideoPage{
+  width:100%;
+  height:100%;
+  padding:10px 40px;
+  box-sizing: border-box;
+  /* 宽度100% padding 配合box-sizing 实现自适应*/
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+}
+.video-control{
+  position: relative;
+  box-sizing: border-box;
+  flex:0 1 800px;
+  height:450px;
+  overflow: hidden;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+}
+
+.video-control-bar{
+  position: absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  background-color:rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index:100;
+}
+
+.video-control-bar ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding:1rem 0;
+}
+.video-control-bar li{
+  display: flex;
+  align-items: center;
+  height:18px;
+}
+
+.video-pause .icon{
+  width:18px;
+}
+.video-control .icon{
+  margin:0 .5rem;
+}
+.video-control path{
+  fill:#bbb;
+}
+.video-progress{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background-color:#888;
+  top:0;
+  width:100%;
+  height:2px;
+}
+.video-control span{
+  color:#bbb;
+}
+.video-progress-bar{
+  width:var(--video-progress-bar-width);
+  height:100%;
+  background-color:#ff4e4e;
+}
+.video-progress-top{
+  background-color: #ff4e4e;
+  width:4px;
+  height:4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #fff, 0 0 5px 3px #555;
+}
+.video-block{
+  width:100%;
+  display: flex;
+  flex:1;
+  height:100%;
+  align-items: center;
+}

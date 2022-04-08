@@ -8,7 +8,8 @@
 const initState = {
   songList: [],
   curIdx: 0,
-  song:null
+  song:null,
+  video:null,
 };
 // preState == undefined 初始化
 export default function searchReducer(preState = initState, action) {
@@ -32,8 +33,12 @@ export default function searchReducer(preState = initState, action) {
         {
           songList: newSongList,
           curIdx: curIdx + 1,
-          song:data
+          song:data,
         });
+    case 'watchMV':return Object.assign({},preState,{
+      video:data.video,
+      duration:data.duration
+    });
     case 'getSinger': ; break;
     case 'getAlbums': ; break;
     default:

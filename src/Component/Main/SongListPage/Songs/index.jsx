@@ -8,7 +8,7 @@ export default class Songs extends Component {
   }
   render() {
     console.log(this.props);
-    const { songs } = this.props.location.state;
+    const { songs } = this.props;
     return (
       <table className="SongListPageSongs">
         <thead>

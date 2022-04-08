@@ -29,7 +29,7 @@ export default class Progress extends Component {
 
   // 想知道这么写会不会影响性能...
   render() {
-    const { totalTime, curTime, handleMouseDown } = this.props;
+    const { totalTime, curTime, handleMouseDown, timeStyle } = this.props;
     const totalTimeMin = Math.floor(totalTime / 60),
       totalTimeSec = totalTime % 60,
       bufferTime = 0;
@@ -39,7 +39,8 @@ export default class Progress extends Component {
           {("0" + Math.floor(curTime / 60)).slice(-2)}:
           {("0" + (curTime % 60)).slice(-2)}
         </span>
-
+        {timeStyle == 2 && <span>{("0" + totalTimeMin).slice(-2)}:
+          {("0" + totalTimeSec).slice(-2)}</span>}
         <div className="Progress-slider"
           onMouseEnter={this.handleMouseEnter}
           onMouseDown={handleMouseDown}
@@ -48,10 +49,10 @@ export default class Progress extends Component {
             <div className='Progress-slider-top' ></div>
           </div>
         </div>
-        <span>
+        {timeStyle == 1 && <span>
           {("0" + totalTimeMin).slice(-2)}:
           {("0" + totalTimeSec).slice(-2)}
-        </span>
+        </span>}
       </div>
     );
   }

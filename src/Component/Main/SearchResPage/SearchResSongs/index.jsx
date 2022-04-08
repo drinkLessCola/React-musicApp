@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './index.css';
 import { connect } from 'react-redux';
-import { addNewSongAction } from '../../../../Redux/actions';
+import { addNewSongAction } from '../../../../Redux/searchActions';
 class SearchResSongs extends Component {
 
   // componentDidMount(){

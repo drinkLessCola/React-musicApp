@@ -16,10 +16,9 @@ class Player extends Component {
     super(props);
     this.state = {
       curTime: 0,
-      pause: false,
+      pause: true,
       isHandling: false,
     };
-
   }
   audio = React.createRef();
   ratio = 0;
@@ -31,7 +30,6 @@ class Player extends Component {
   handlePause = (hasSourse) => {
     if (!hasSourse) return;
     const { pause } = this.state;
-    console.log(pause);
     if (pause) this.audio.current.play();
     else this.audio.current.pause();
     this.setState({
@@ -42,7 +40,13 @@ class Player extends Component {
   handleTimeUpdate = (event) => {
     // cur 传给子组件使用
     const cur = Math.floor(event.target.currentTime);
-    const { isHandling } = this.state;
+    const { isHandling, pause } = this.state;
+    if(pause && !this.audio.current.paused){
+      this.setState({
+        pause:false
+      })
+    } 
+
     if (isHandling) return;
     this.setState({
       curTime: cur,
@@ -134,13 +138,15 @@ class Player extends Component {
   }
   render() {
     // const hasSourse = (this.props.songSrc == '') ? false : true;
-    const { mode, changeMode, songSrc,song } = this.props;
+    const { mode, changeMode, songSrc, song } = this.props;
     const { curTime, isHandling, pause } = this.state;
 
+    // 歌曲总的时间
     const totalTime = Math.floor(song?.dt/1000) || 0 ;
     const id = (song)? song.id : undefined;
-
+    // 一秒对应的进度条长度
     this.ratio = totalTime / 350;
+    // 播放模式
     const modeIcon = (mode === 0) ?
       <ModeIcon1 /> : (mode === 1) ?
         <ModeIcon2 /> : (mode === 2) ?
