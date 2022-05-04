@@ -5,12 +5,11 @@ import PubSub from 'pubsub-js'
 import './index.css';
 export default function Func(props) {
   const ctr = React.createRef();
-  function handleClick(event) {
-    console.log(event);
 
+  function handleClick(event) {
     const target = event.target;
     const top = target.closest('.soundController-bar-top');
-    const ctrCoord = ctr.getBoundingClientRect();
+    const ctrCoord = ctr.current.getBoundingClientRect();
 
     let y = event.clientY - ctrCoord.top;
     if (y < 0) y = 0;

@@ -1,68 +1,77 @@
-:root{
-  font-size:10px;
+:root {
+  font-size: 10px;
 
-  --myColor:#fff;
-  --theme-bg-color:#fff;
-  --btn-color:#ec4141;
-  --sound-bar-height:40px;
-  --progress-bar-width:0px;
-  --video-progress-bar-width:100px;
-  --login-width:320px;
-  --login-height:450px;
+  --myColor: #fff;
+  --theme-bg-color: #fff;
+  --btn-color: #ec4141;
+  --sound-bar-height: 40px;
+  --progress-bar-width: 0px;
+  --video-progress-bar-width: 100px;
+  --login-width: 320px;
+  --login-height: 450px;
 }
+
 /* @media (min-width:576px) {
   
 }
 @media (min-width:1200px){
   
 } */
-body{
+body {
   /* font-family: PingFangSC-Light, sans-serif; */
-  width:100vw;
-  height:100vh;
-  background-image:linear-gradient(#ffafad,#ffc3a0);
- 
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(#ffafad, #ffc3a0);
+
 }
-#root{
-  width:inherit;
-  height:inherit;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+
+#root {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
+
 body[data-theme="dark"] {
   --myColor: '#333';
 }
 
-*{
-  padding:0;
-  margin:0;
-}
-table{
-  border-spacing:0;
-}
-ul{
-  list-style:none;
-}
-th{
-  font-weight:normal;
-}
-button{
-  border:none;
-}
-a{
-  text-decoration: none;
-  color:#333;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-input{
-  background-color:transparent;
-  border: none;
-  width:10.5rem;
-  outline:none;
-  margin:0 1rem;
+table {
+  border-spacing: 0;
 }
+
+ul {
+  list-style: none;
+}
+
+th {
+  font-weight: normal;
+}
+
+button {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  width: 10.5rem;
+  outline: none;
+  margin: 0 1rem;
+}
+
 /* 图片压缩 */
 /* img {
 	image-rendering:-moz-crisp-edges;
@@ -71,148 +80,88 @@ input{
 	image-rendering: crisp-edges;
 	-ms-interpolation-mode:nearest-neighbor;
 } */
-.icon{
-  fill:#2c2c2c;
-  width:100%;
-  height:100%;
+.icon {
+  fill: #2c2c2c;
+  width: 100%;
+  height: 100%;
 }
-.App{
-  max-width:1250px;
-  min-width:900px;
-  width:96vw;
-  height:90%;
-  min-height:500px;
-  background-color:var(--theme-bg-color);
-  border-radius:1rem;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+
+.App {
+  max-width: 1250px;
+  min-width: 900px;
+  width: 96vw;
+  height: 90%;
+  min-height: 500px;
+  background-color: var(--theme-bg-color);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   /* 禁止多次点击选中文本 */
   user-select: none;
 }
-.Header{
-  width:100%;
-  height:5rem;
-  background-color:#fff;
-  border-radius:1rem 1rem 0 0;
-  z-index:50;
-  flex-shrink:0;
+
+.Header {
+  width: 100%;
+  height: 5rem;
+  background-color: #fff;
+  border-radius: 1rem 1rem 0 0;
+  z-index: 50;
+  flex-shrink: 0;
 }
+
 /* 上下固定，中间滚动布局 */
-.main{
-  position:relative;
-  flex:1 1;
-  height:100%;
-  width:100%;
-  background-color:#fff;
-  display:flex;
+.main {
+  position: relative;
+  flex: 1 1;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
   overflow: hidden;
-  flex-direction:row;
+  flex-direction: row;
 }
 
 
 /* Main */
-.Main{
-  position:relative;
-  flex:1;
-  width:100%;
-  height:100%;
+.Main {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-}
-.SongListPage{
-
-  display:flex;
-  background-color:#fff;
-  flex-direction:column;
-  flex:0 1;
-  max-height:100%;
-  overflow:auto;
-}
-.SongListPageInfo{
-  display:flex;
-  background-color:#fff;
-  margin:2rem;
-}
-.SongListPageInfo-img{
-  position:relative;
-  width:18rem;
-  height:18rem;
-  outline:1px solid #ddd;
-  border-radius:.8rem;
-  overflow:hidden;
-  padding:0;
-  margin-right:2rem;
-}
-
-.SongListPageInfo-img img{
-  position:relative;
-  width:100%;
-  vertical-align:bottom;
-  font-size:0;
-}
-.SongListPageInfo-user{
-  height:4.3rem;
-  color:#666;
-}
-
-.SongListPageInfo-intro{
-  font-size:1.3rem;
-}
-.SongListPage-tab{
-  display:flex;
-  padding:1rem 2rem;
-  font-size:1.4rem;
-  margin-bottom:.8rem;
-}
-.SongListPage-tab li{
- margin:0 1rem;
-}
-
-.SongListPage-tab .active{
-  position:relative;
-  font-weight:bold;
-  font-size:1.7rem;
-}
-.SongListPage-tab .active::after{
-  content:'';
-  position:absolute;
-  width:80%;
-  height:.3rem;
-  background-color:var(--btn-color);
-  bottom:-.4rem;
-  left:10%;
-}
-
-.SongListPageDetail{
-  display:flex;
-  flex-direction:column;
-}
-.SongListPageSongs{
-  /* font-family: PingFangSC-Thin, sans-serif; */
-  overflow:auto;
 }
 
 /* table */
-table .icon{
-  width:1.6rem;
-  fill:#999;
+table .icon {
+  width: 1.6rem;
+  fill: #999;
 }
-tHead tr{
-  font-size:1.3rem;
-  text-align:left;
-  color:#888;
+
+tHead tr {
+  font-size: 1.3rem;
+  text-align: left;
+  color: #888;
 }
-tr{
+
+tr {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-collapse: collapse;
-  font-size:1.3rem;
-  height:3.2rem;
-  color:#666;
+  font-size: 1.3rem;
+  height: 3.5rem;
+  color: #666;
 }
-tBody tr:hover{
-  background-color:#f0f1f2 !important;
+
+tBody tr:hover {
+  background-color: #f0f1f2 !important;
+}
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* .SongListPageSongs tr td:nth-child(1){
@@ -225,99 +174,111 @@ tBody tr:hover{
 
 /* 这样复用性会好一些 */
 /* id */
-.list-idx{
-  flex:0 1 40px;
-  text-align:center;
-  padding:0 1rem;
-  color:#bbb;
+.list-idx {
+  flex: 0 1 40px;
+  text-align: center;
+  padding: 0 1rem;
+  color: #bbb;
 }
-.list-func{
-  flex:0 1 60px;
+
+.list-func {
+  flex: 0 1 60px;
 }
-.list-name{
-  flex:0 1 400px;
-  color:#444;
+
+.list-name {
+  flex: 0 1 400px;
+  color: #444;
 }
-.list-time{
-  flex:0 1 50px;
-  color:#999;
+
+.list-time {
+  flex: 0 1 50px;
+  color: #999;
   text-align: center;
 }
-.list-artists{
+
+.list-artists {
   flex: 0 1 200px;
 }
-.list-album{
+
+.list-album {
   flex: 0 1 250px;
 }
+
 /* 奇数浅灰背景 */
-tBody tr:nth-child(odd){
-  background-color:#f9f9f9;
+tBody tr:nth-child(odd) {
+  background-color: #f9f9f9;
 }
 
 
 
 
 /* SongListPageFunc */
-.SongListPageFunc{
-  margin:1.8rem 0;
-  display:flex;
+.SongListPageFunc {
+  margin: 1.8rem 0;
+  display: flex;
 }
-.SongListPageFunc > button{
-  height:3rem;
-  outline:1px solid #c8c8c8;
-  background-color:#fff;
-  color:#333;
-  font-size:1.4rem;
-  padding:.6rem 1.5rem;
-  margin:0 .5rem;
-  border-radius:2rem;
+
+.SongListPageFunc>button {
+  height: 3rem;
+  outline: 1px solid #c8c8c8;
+  background-color: #fff;
+  color: #333;
+  font-size: 1.4rem;
+  padding: .6rem 1.5rem;
+  margin: 0 .5rem;
+  border-radius: 2rem;
   display: flex;
   align-items: center;
 }
-.SongListPageFunc > button .icon{
-  width:1.5rem;
-  margin-right:.5rem;
-}
-.SongListPageFunc > button path{
-  fill:#fff;
-}
-.SongListPageFunc > button:nth-child(1){
-  background-color:var(--btn-color);
-  outline:none;
-  color:#fff;
-  border-radius:2rem 0 0 2rem;
-  margin-right:0;
-}
-.SongListPageFunc > button:nth-child(2){
-  background-color:var(--btn-color);
-  outline:none;
-  color:#fff;
-  left:100%;
-  height:3rem;
-  top:0;
-  padding:.5rem 1rem;
-  font-size:1.5rem;
-  margin-left:0;
-  border-left:1px solid #ed5353;
-  border-radius:0 2rem 2rem 0;
+
+.SongListPageFunc>button .icon {
+  width: 1.5rem;
+  margin-right: .5rem;
 }
 
-.BigHeart{
-  width:40%;
-  height:40%;
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  opacity:.9;
+.SongListPageFunc>button path {
+  fill: #fff;
+}
+
+.SongListPageFunc>button:nth-child(1) {
+  background-color: var(--btn-color);
+  outline: none;
+  color: #fff;
+  border-radius: 2rem 0 0 2rem;
+  margin-right: 0;
+}
+
+.SongListPageFunc>button:nth-child(2) {
+  background-color: var(--btn-color);
+  outline: none;
+  color: #fff;
+  left: 100%;
+  height: 3rem;
+  top: 0;
+  padding: .5rem 1rem;
+  font-size: 1.5rem;
+  margin-left: 0;
+  border-left: 1px solid #ed5353;
+  border-radius: 0 2rem 2rem 0;
+}
+
+.BigHeart {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .9;
 }
 
 ::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
-  scrollbar-width: none; /* Firefox */
+  display: none;
+  /* Chrome Safari */
+  scrollbar-width: none;
+  /* Firefox */
 }
-h1{
+
+h1 {
   /* margin-bottom:1rem; */
 }
-
-

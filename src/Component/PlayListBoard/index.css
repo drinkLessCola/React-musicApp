@@ -51,6 +51,9 @@
   text-overflow: ellipsis; 
   overflow: hidden; 
 }
+.PlayListBoard tBody{
+  overflow: auto;
+}
 .PlayListBoard tBody tr{
   width:400px;
   display:flex;

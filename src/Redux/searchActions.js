@@ -37,13 +37,6 @@ export const createSearchAction = (type, data) => {
   }
 }
 
-export const addNewSongAction = (data) => {
-  return async (dispatch) => {
-    let res = await axios(`/song/detail?ids=${data}`);
-    dispatch({type:'addSong', data:res.data.songs[0]})
-  }
-}
-
 export const getMvAction = (id, duration) =>{
   return async (dispatch) => {
     let res = await axios(`/video/url?id=${id}`)
@@ -88,11 +81,8 @@ export const getLoginStateAction = () => {
     dispatch({type:'login', data: {user:profile, detail:profile, playlist:playlist.data.playlist}})
   }
 }
-
 export const getUserDetail = (uid) => {
-
 }
-
 export const logoutAction = () => {
   return async (dispatch) => {
     let res = await axios('/logout');
@@ -100,7 +90,7 @@ export const logoutAction = () => {
     dispatch({type:'logout',data:null})
   }
 }
-// 获取歌单列表
+// 获取歌单信息
 export const getPlayListAction = (lid) => {
   return async (dispatch) => {
     console.log('id', lid);
@@ -109,7 +99,7 @@ export const getPlayListAction = (lid) => {
     dispatch({type:'getPlayListAction', data: res.data.playlist})
   }
 }
-
+// 获取歌单的所有歌曲
 export const getPlayListSongsAction = (lid) => {
   return async (dispatch) => {
     console.log('!!!!!!!lid', lid);
@@ -118,3 +108,4 @@ export const getPlayListSongsAction = (lid) => {
     dispatch({type:'getPlayListSongs', data:res.data.songs})
   }
 }
+

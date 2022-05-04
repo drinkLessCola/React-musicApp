@@ -9,21 +9,11 @@
   width:100%;
   table-layout:fixed;
 }
-.SearchResSongs td{
+/* .SearchResSongs td{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; 
-} 
+}  */
 /* .SearchResSongs tBody tr:nth-child(odd){
   background-color:#f9f9f9;
 } */
-
-.SearchResSongs .list-idx{
-
-}
-.SearchResSongs .list-name{
-  
-}
-.SearchResSongs .list-time{
-  
-}

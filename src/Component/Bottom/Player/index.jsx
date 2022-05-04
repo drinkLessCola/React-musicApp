@@ -10,6 +10,7 @@ import ModeIcon4 from '../../../Icons/ModeIcon4';
 import PlayIcon from '../../../Icons/PlayIcon';
 import PubSub from 'pubsub-js';
 import { connect } from 'react-redux';
+import { next, prev } from '../../../Redux/songActions';
 
 class Player extends Component {
   constructor(props) {
@@ -22,9 +23,9 @@ class Player extends Component {
   }
   audio = React.createRef();
   ratio = 0;
-  // 切歌 
-  handleChange(num) {
-    this.props.changeSong(num);
+  // 切换播放模式
+  changeMode = () => {
+
   }
   // 播放 / 暂停
   handlePause = (hasSourse) => {
@@ -60,7 +61,19 @@ class Player extends Component {
   handleProgressChange = (newProgress) => {
     this.audio.current.currentTime = newProgress;
   }
-
+  // 当前歌曲播放结束
+  handleEnded = (e) => {
+    // switch(this.props.mode){
+    //   case 0:break;
+    // }
+    this.next();
+  }
+  prev = () => {
+    this.props.prev();
+  }
+  next = () => {
+    this.props.next();
+  }
   calcProgress = (width) => {
     const newProgress = Math.floor((width || 0) * this.ratio);
     this.handleProgressChange(newProgress);
@@ -136,9 +149,18 @@ class Player extends Component {
       this.audio.current.volume = volume;
     }))
   }
+  handleProgress = (event) => {
+    let audio = event.target;
+    console.log(audio.buffered)
+    audio.readyState == 4 && console.log('正在缓冲：' + Math.round(audio.buffered.end(0) / audio.duration * 100) + '%');
+
+  }
+  handleSeeked = (event) => {
+    console.log("seeked", event.target.buffered)
+  }
   render() {
     // const hasSourse = (this.props.songSrc == '') ? false : true;
-    const { mode, changeMode, songSrc, song } = this.props;
+    const { mode, songSrc, song } = this.props;
     const { curTime, isHandling, pause } = this.state;
 
     // 歌曲总的时间
@@ -154,17 +176,17 @@ class Player extends Component {
     return (
       <div className="Player">
         <div className="Player-btns">
-          <div className="Player-mode" onClick={changeMode}>
+          <div className="Player-mode" onClick={this.changeMode}>
             {modeIcon}
           </div>
           <ul>
-            <li className="Player-btn" onClick={() => this.handleChange(-1)} title="上一首">
+            <li className="Player-btn" onClick={this.prev} title="上一首">
               <PrevIcon />
             </li>
             <li className="Player-btn play-icon" title="暂停" onClick={() => this.handlePause(true)}>
               {pause ? <PlayIcon /> : <PauseIcon />}
             </li>
-            <li className="Player-btn" onClick={() => this.handleChange(1)} title="下一首">
+            <li className="Player-btn" onClick={this.next} title="下一首">
               <NextIcon />
             </li>
           </ul>
@@ -181,7 +203,10 @@ class Player extends Component {
           ref={this.audio}
           src={(id)?`https://music.163.com/song/media/outer/url?id=${id}.mp3`:''}
           onTimeUpdate={this.handleTimeUpdate}
-          autoPlay={true}
+          autoPlay={false}
+          onEnded={this.handleEnded}
+          onProgress={this.handleProgress}
+          onSeeked={this.handleSeeked}
         >Your browser can't support HTML5 Audio</audio>
       </div>
     );
@@ -190,6 +215,11 @@ class Player extends Component {
 
 
 export default connect(
-  state => ({song:state.song}),
-  {}
+  state => ({
+    song:state.song
+  }),
+  {
+    next:next,
+    prev:prev
+  }
 )(Player)

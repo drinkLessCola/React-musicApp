@@ -5,6 +5,12 @@ import UnlikedIcon from '../../../Icons/UnlikedIcon';
 import ListIcon from '../../../Icons/ListIcon';
 import { connect } from 'react-redux';
 import { getPlayListAction } from '../../../Redux/searchActions'
+
+const TYPE = [
+  " ",
+  "创建的歌单",
+  "收藏的歌单"
+]
 function SongListBlock(props) {
   function changePage(e){
     console.log("changePage", e)
@@ -19,16 +25,16 @@ function SongListBlock(props) {
   // creator
   // coverImgUrl
   // anonimous
-  const { playlist, uid=null } = props;
+  const { playlist, uid=null, type } = props;
   console.log("playlist", playlist)
   console.log("uid", uid)
   return (
     <div className="SideBar-unit">
-      <div className="title">创建的歌单</div>
+      <div className="title">{TYPE[type]}</div>
       <ul onClick={changePage}>
         {playlist.map((l, idx) => {
           
-          return (l.userId === props.uid) && (
+          return (
             <li className="list-item" key={idx} data-id={l.id}>
               <div className='icon'>{(l.specialType == 5) ? <UnlikedIcon /> : <ListIcon />}</div>
               <NavLink to={`/songlist/${l.id}`}>{l.name}</NavLink>
@@ -42,9 +48,7 @@ function SongListBlock(props) {
 }
 
 export default connect(
-  state => ({
-    uid:state.user?.user?.userId
-  }),
+  state => ({}),
   {
     getPlayListAction:getPlayListAction,
   }

@@ -44,6 +44,12 @@ export default function searchReducer(preState = initState, action) {
           curIdx: curIdx + 1,
           song:data,
         });
+    case 'replaceList': return Object.assign({},preState,
+      {
+        songList:data.songs,
+        curIdx:data.id,
+        song:data.songs[data.id]
+      })
     case 'watchMV':return Object.assign({},preState,{
       video:data.video,
       duration:data.duration
@@ -60,13 +66,12 @@ export default function searchReducer(preState = initState, action) {
       isLogin:data,
     });
     case 'getPlayListAction': return Object.assign({}, preState, {
-      playlist:{
+      playlist:Object.assign({}, preState.playlist,{
         name:data.name,
         coverImgUrl:data.coverImgUrl,
         tags:data.tags,
-        song:data.tracks,
         creator:data.creator,
-      },
+      }),
     })
     case 'getPlayListSongs': return Object.assign({}, preState, {
       playlist:Object.assign({}, preState.playlist, {
@@ -75,6 +80,16 @@ export default function searchReducer(preState = initState, action) {
     });
     case 'getSinger': ; break;
     case 'getAlbums': ; break;
+    case 'prev': return Object.assign({}, preState, {
+      curIdx:(+preState.curIdx) - 1,
+      song:preState.songList[
+        +preState.curIdx - 1]
+    });
+    case 'next': return Object.assign({}, preState, {
+      curIdx:(+preState.curIdx) + 1,
+      song:preState.songList[
+        +preState.curIdx + 1]
+    })
     default:
       return preState;
   }

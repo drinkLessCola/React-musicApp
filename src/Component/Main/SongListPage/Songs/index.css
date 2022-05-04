@@ -1,3 +1,11 @@
-.SongListPageSongs .list-idx{
-  
+.SongListPageSongs{
+  display: flex;
+  width:100%;
+  flex-grow:0;
+  flex-shrink:1;
+  flex-direction: column;
+  max-height: 100%;
+  padding:0 3rem;
+  box-sizing: border-box;
+  overflow: auto;
 }
