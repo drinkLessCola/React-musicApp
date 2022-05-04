@@ -6,6 +6,7 @@
   --btn-color: #ec4141;
   --sound-bar-height: 40px;
   --progress-bar-width: 0px;
+  --buffer-bar-width:0px;
   --video-progress-bar-width: 100px;
   --login-width: 320px;
   --login-height: 450px;
@@ -277,8 +278,4 @@ tBody tr:nth-child(odd) {
   /* Chrome Safari */
   scrollbar-width: none;
   /* Firefox */
-}
-
-h1 {
-  /* margin-bottom:1rem; */
 }

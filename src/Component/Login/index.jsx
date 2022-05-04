@@ -24,7 +24,6 @@ function Login(props){
     return (
       <div>
         <div className='Login'>
-          <button onClick={logout}>退出登录</button>
           <div className="Login-img">
           <img src={loginPic}></img>
           </div>

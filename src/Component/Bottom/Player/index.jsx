@@ -40,7 +40,8 @@ class Player extends Component {
   // 监听播放器进度变化
   handleTimeUpdate = (event) => {
     // cur 传给子组件使用
-    const cur = Math.floor(event.target.currentTime);
+    const audio = event.target;
+    const cur = Math.floor(audio.currentTime);
     const { isHandling, pause } = this.state;
     if(pause && !this.audio.current.paused){
       this.setState({
@@ -49,13 +50,21 @@ class Player extends Component {
     } 
 
     if (isHandling) return;
+    
+    let bufferWidth = 0;
+    if(audio.readyState == 4){
+      let buffered = audio.buffered.end(0) / audio.duration;
+      bufferWidth = ( buffered * 350) || 0;
+      document.documentElement.style.setProperty('--buffer-bar-width', bufferWidth + 'px');
+    }
     this.setState({
       curTime: cur,
     })
     // 如果正在调整播放进度，则不改变进度条的长度
-    const width = Math.floor(cur / event.target.duration * 350) || 0;
+    const width = Math.floor(cur / audio.duration * 350) || 0;
     // 修改 css 变量 感觉会影响性能
     document.documentElement.style.setProperty('--progress-bar-width', width + 'px');
+
   }
   // 用户改变 audio 播放进度
   handleProgressChange = (newProgress) => {
@@ -80,7 +89,6 @@ class Player extends Component {
   }
 
   handleMouseDown = (event) => {
-    // 
     if (this.state.isHandling) return;
 
     // 是否是点击事件
@@ -151,9 +159,7 @@ class Player extends Component {
   }
   handleProgress = (event) => {
     let audio = event.target;
-    console.log(audio.buffered)
-    audio.readyState == 4 && console.log('正在缓冲：' + Math.round(audio.buffered.end(0) / audio.duration * 100) + '%');
-
+    
   }
   handleSeeked = (event) => {
     console.log("seeked", event.target.buffered)
@@ -165,6 +171,7 @@ class Player extends Component {
 
     // 歌曲总的时间
     const totalTime = Math.floor(song?.dt/1000) || 0 ;
+    console.log("totalTime", totalTime);
     const id = (song)? song.id : undefined;
     // 一秒对应的进度条长度
     this.ratio = totalTime / 350;
@@ -205,7 +212,7 @@ class Player extends Component {
           onTimeUpdate={this.handleTimeUpdate}
           autoPlay={false}
           onEnded={this.handleEnded}
-          onProgress={this.handleProgress}
+          // onProgress={this.handleProgress}
           onSeeked={this.handleSeeked}
         >Your browser can't support HTML5 Audio</audio>
       </div>

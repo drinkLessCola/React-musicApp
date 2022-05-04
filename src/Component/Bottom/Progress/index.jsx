@@ -45,12 +45,15 @@ export default class Progress extends Component {
           onMouseEnter={this.handleMouseEnter}
           onMouseDown={handleMouseDown}
         >
+          <div className='Progress-buffer-bar'></div>
           <div className='Progress-slider-bar'>
             <div className='Progress-slider-top' ></div>
           </div>
         </div>
-        {timeStyle == 1 && <span>
-          {("0" + totalTimeMin).slice(-2)}:
+        <span>{("0" + totalTimeMin).slice(-2)}:
+          {("0" + totalTimeSec).slice(-2)}
+        </span>
+        {timeStyle == 2 && <span>{("0" + totalTimeMin).slice(-2)}:
           {("0" + totalTimeSec).slice(-2)}
         </span>}
       </div>

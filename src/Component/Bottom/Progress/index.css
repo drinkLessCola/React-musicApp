@@ -4,9 +4,10 @@
   align-items:center;
 }
 .Progress-slider{
+  position: relative;
   height:.3rem;
   width:350px;
-  background-color:#ccc;
+  background-color:#eee;
   border-radius:2rem;
   margin:0 1rem;
 
@@ -15,13 +16,23 @@
   color:#aaa;
 }
 .Progress-slider-bar{
-  position:relative;
+  position:absolute;
+  left:0;
+  top:0;
   width:var(--progress-bar-width);
   height:inherit;
   background-color: var(--btn-color);
   border-radius: 5px;
 }
-
+.Progress-buffer-bar{
+  position:absolute;
+  left:0;
+  top:0;
+  width:var(--buffer-bar-width);
+  height:inherit;
+  background-color: #fadfde;
+  border-radius: 5px;
+}
 .Progress-slider-hover{
   height:.5rem;
 }
