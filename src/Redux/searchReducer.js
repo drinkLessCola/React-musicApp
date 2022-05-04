@@ -10,6 +10,15 @@ const initState = {
   curIdx: 0,
   song:null,
   video:null,
+  user:{
+    loginState:false,
+    user:null,
+    detail:null,
+    playlist:[]
+  },
+  playlist:{
+    songs:[]
+  }
 };
 // preState == undefined 初始化
 export default function searchReducer(preState = initState, action) {
@@ -38,6 +47,31 @@ export default function searchReducer(preState = initState, action) {
     case 'watchMV':return Object.assign({},preState,{
       video:data.video,
       duration:data.duration
+    });
+    case 'login':return Object.assign({}, preState, {
+      user:{
+        loginState:data.loginState,
+        user:data.user,
+        detail:data.detail,
+        playlist:data.playlist
+      }
+    });
+    case 'loginState':return Object.assign({}, preState, {
+      isLogin:data,
+    });
+    case 'getPlayListAction': return Object.assign({}, preState, {
+      playlist:{
+        name:data.name,
+        coverImgUrl:data.coverImgUrl,
+        tags:data.tags,
+        song:data.tracks,
+        creator:data.creator,
+      },
+    })
+    case 'getPlayListSongs': return Object.assign({}, preState, {
+      playlist:Object.assign({}, preState.playlist, {
+        songs:data,
+      })
     });
     case 'getSinger': ; break;
     case 'getAlbums': ; break;

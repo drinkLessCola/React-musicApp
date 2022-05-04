@@ -12,7 +12,7 @@
   top:50%;
   transform: translate(-50%,-50%);
   /* 层叠顺序处于最前面 */
-  z-index:100;
+  z-index:150;
   background-color:#fff;
   padding:1rem 0;
 }
@@ -48,6 +48,7 @@
   border:1px solid #ddd;
   border-radius: 5px;
 }
+
 .tr{
   display: flex;
   align-items: center;
@@ -103,7 +104,8 @@ select{
 .Login-form input{
   font-size: 1.2rem;
   color:#333;
-  padding:1rem 0;
+  padding:1rem 1rem;
+  margin:0;
 }
 /* checkbox */
 input[type='checkbox']{

@@ -8,7 +8,7 @@ export default class Bottom extends Component {
     return (
       <div className="Bottom">
         <SongInfo/>
-        <Player time={this.props.song.time}
+        <Player time={this.props.song?.time}
           changeSong={this.props.changeSong}
           changeMode={this.props.changeMode}
           mode={this.props.mode}

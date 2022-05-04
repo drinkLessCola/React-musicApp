@@ -27,6 +27,11 @@
   font-size:1.4rem;
   cursor:pointer;
 }
+.list-item a{
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .list-item:hover{
   background-color:#efefef;
 }

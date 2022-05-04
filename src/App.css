@@ -222,6 +222,7 @@ tBody tr:hover{
   padding:0 1rem;
   color:#bbb;
 } */
+
 /* 这样复用性会好一些 */
 /* id */
 .list-idx{

@@ -2,23 +2,19 @@ import React, { Component } from 'react'
 import './index.css'
 import LogOutAvatar from '../../Icons/LogOutAvatar'
 import { connect } from 'react-redux';
-class User extends Component {
-  render() {
-    const {username = '未登录', avatar = null} = this.props;
+
+export default function User(props){
+    const {user = null} = props;
+    console.log("User", user)
     return (
       <div className='User'>
         <div className='User-avatar'>
-          {avatar ?<img 
-          src={``} 
+          {user ?<img 
+          src={user.avatarUrl} 
           alt='user'></img>:<LogOutAvatar></LogOutAvatar>}
         </div>
-        <div className='User-name'>{username}</div>
+        <div className='User-name'>{user?.nickname}</div>
       </div>
     )
-  }
+  
 }
-
-export default connect(
-  state => ({user:state.user}),
-  {}
-)(User)

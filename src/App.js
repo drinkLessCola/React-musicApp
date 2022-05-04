@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SideBar from './Component/SideBar';
 import Bottom from './Component/Bottom';
 import Header from './Component/Header';
@@ -8,19 +8,27 @@ import Login from './Component/Login';
 
 import './App.css'
 import PlayListBoard from './Component/PlayListBoard';
+import { connect } from 'react-redux';
+import { getLoginStateAction } from './Redux/searchActions';
 
 
 
-export default function App() {
-
+function App(props) {
   const [state, setState] = React.useState({
     isPlayListShowing: false,  // 显示播放列表
     songListCurIdx: 1,         // 播放到了歌单的哪一首
     mode: 0,                   // 播放模式，0：列表循环 1：单曲循环 2：随机循环 3：顺序循环
     songSrc: '',
-    login: false,
+    loginState: null,
     showLogin:false,
   });
+
+  useEffect(() => {
+    const res = (async() => {
+      return await props.getLoginState();
+    })();
+    console.log('res', res)
+  },[]);
 
   console.log(state, setState)
   const user = localStorage.getItem('user');
@@ -110,7 +118,7 @@ export default function App() {
       songListCurIdx: newIdx,
     })
   }
-  function changeMode (event) {
+  function changeMode(event) {
 
     const { mode } = state;
     setState({
@@ -120,7 +128,6 @@ export default function App() {
     event.stopPropagation();
   }
   function handleClick(event){
-
     const target = event.target.closest('.PlayListBoard');
     if (target || !state.isPlayListShowing) return;
     setState({
@@ -129,7 +136,6 @@ export default function App() {
   }
   function getSong(event){
     console.log('e')
-
     const musicFile = event.target.files[0];
     let url = URL.createObjectURL(musicFile);
     setState({
@@ -137,13 +143,13 @@ export default function App() {
     })
   }
   console.log(state.showLogin)
+  // React.useState
   return (
     <div className="App" onClick={handleClick}>
-      <Header login={state.login} showLogin={showLogin}/>
+      <Header showLogin={showLogin} />
       <div className="main">
-        <SideBar list={data.list} />
+        <SideBar list={props.playlist} />
         <Main>
-          
         </Main>
         {state.isPlayListShowing && <PlayListBoard list={data.playList} />}
       </div>
@@ -165,3 +171,14 @@ export default function App() {
 
 
 
+// 花括号外层要包裹小括号
+export default connect(
+  state => ({
+    loginState:state.loginState,
+    detail:state.detail,
+    playlist:state.playlist,
+  }),
+  {
+    getLoginState:getLoginStateAction
+  }
+)(App)

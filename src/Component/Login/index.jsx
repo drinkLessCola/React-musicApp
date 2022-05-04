@@ -1,15 +1,30 @@
 import React, { Component } from 'react'
 import './index.css'
 import loginPic from '../../imgs/login.png';
-export default function Login(props){
-    function login(){
-      const phone = this.phone.value;
-      const password = this.password.value;
-      localStorage.setItem("user",JSON.stringfy({phone, password}))
+import { getLoginStateAction, loginAction, logoutAction } from '../../Redux/searchActions';
+import { connect } from 'react-redux';
+function Login(props){
+  let phone, password;
+  function login(e){
+      e.preventDefault();
+      console.log("login")
+      const storage = window.localStorage;
+      const phoneValue = phone.value;
+      const passwordValue  = password.value;
+      props.loginAction(phoneValue, passwordValue)
+      // props.getLoginStateAction();
+      // props.logOut();
+      storage.setItem("user",JSON.stringify({phone:phoneValue, password:passwordValue}))
+    }
+    function logout(e){
+      e.preventDefault();
+      console.log("logout")
+      props.logoutAction()
     }
     return (
       <div>
         <div className='Login'>
+          <button onClick={logout}>退出登录</button>
           <div className="Login-img">
           <img src={loginPic}></img>
           </div>
@@ -19,10 +34,10 @@ export default function Login(props){
                 <select className='addRightBorder'>
                   <option value='+86'>+86</option>
                 </select>
-                <input ref={(i)=>this.phone = i} placeholder='请输入手机号' type='tel'></input>
+                <input ref={(i)=>phone = i} placeholder='请输入手机号' type='tel'></input>
               </div>
               <div className='tr'>
-                <input ref={(i)=>this.password = i}type='password' placeholder='请输入密码' />
+                <input ref={(i)=>password = i}type='password' placeholder='请输入密码' />
               </div>
             </div>
             <div className='tr'>
@@ -49,3 +64,13 @@ export default function Login(props){
     )
   
 }
+
+
+export default connect(
+  state => ({res:state.res}),
+  {
+    loginAction:loginAction,
+    getLoginStateAction:getLoginStateAction,
+    logoutAction:logoutAction
+  }
+)(Login)

@@ -14,13 +14,16 @@ const TYPE = {
   'lyrics':10,
   'users':1002,
 }
+axios.defaults.baseURL = 'https://netease-cloud-music-api-tawny-nine.vercel.app/'
+axios.defaults.withCredentials = true
 // export const createSearchAction = (type, data) => ({type,data});
 // 异步任务会被传入一个 dispatch 参数供使用
 export const createSearchAction = (type, data) => {
   console.log('dispatch reach', type, data)
   return async (dispatch) => {
     console.log('await')
-    let res = await axios(`http://localhost:4000/search?keywords=${data}&&type=${TYPE[type]}`);
+    let res = await axios('/search',{
+      params:{keywords:data,type:TYPE[type]}});
     console.log('await done', res)
     
     dispatch({
@@ -36,16 +39,82 @@ export const createSearchAction = (type, data) => {
 
 export const addNewSongAction = (data) => {
   return async (dispatch) => {
-    let song = await axios(`http://localhost:4000/song/detail?ids=${data}`);
-    dispatch({type:'addSong', data:song.data.songs[0]})
+    let res = await axios(`/song/detail?ids=${data}`);
+    dispatch({type:'addSong', data:res.data.songs[0]})
   }
 }
 
 export const getMvAction = (id, duration) =>{
   return async (dispatch) => {
-    let mv = await axios(`http://localhost:4000/video/url?id=${id}`)
-    console.log(mv);
-    dispatch({type:'watchMV', data:{video:mv.data.urls[0], duration}})
+    let res = await axios(`/video/url?id=${id}`)
+    dispatch({type:'watchMV', data:{video:res.data.urls[0], duration}})
   }
 }
 
+export const loginAction = (phone, password) => {
+  return async (dispatch) => {
+    
+    let res = await axios(`/login/cellphone?phone=${encodeURIComponent(phone)}&password=${encodeURIComponent(password)}`,{
+      withCredentials: true,
+    })
+    console.log(res.data);
+
+    // 未登录成功
+    if(res.status != 200) {
+      console.log("未登录成功")
+      dispatch({type:'login',data:{user:null, detail:null, playlist:null}});
+      return;
+    }
+    // 登录成功
+    console.log("登录成功")
+    const {account:{vipType, id}, cookie, profile:{avatarUrl, nickname} } = res.data;
+    let detail = await axios(`/user/detail?uid=${id}`);
+    let playlist = await axios(`/user/playlist?uid=${id}`);
+    let loginState = await axios('/login/status');
+
+    console.log('loginState', loginState);
+    console.log('detail', detail);
+    console.log('playlist', playlist);
+    dispatch({type:'login', data: {loginState, user:res.data.profile, detail:detail.data, playlist:playlist.data.playlist}})
+  }
+}
+export const getLoginStateAction = () => {
+  return async (dispatch) => {
+    let res = await axios('/login/status');
+    console.log("loginState", res);
+    const {account:{vipType, id}, profile} = res.data.data;
+    let playlist = await axios(`/user/playlist?uid=${id}`);
+
+    dispatch({type:'login', data: {user:profile, detail:profile, playlist:playlist.data.playlist}})
+  }
+}
+
+export const getUserDetail = (uid) => {
+
+}
+
+export const logoutAction = () => {
+  return async (dispatch) => {
+    let res = await axios('/logout');
+    console.log(res);
+    dispatch({type:'logout',data:null})
+  }
+}
+// 获取歌单列表
+export const getPlayListAction = (lid) => {
+  return async (dispatch) => {
+    console.log('id', lid);
+    let res = await axios(`/playlist/detail?id=${lid}`);
+    console.log("playlist detail", res)
+    dispatch({type:'getPlayListAction', data: res.data.playlist})
+  }
+}
+
+export const getPlayListSongsAction = (lid) => {
+  return async (dispatch) => {
+    console.log('!!!!!!!lid', lid);
+    let res = await axios(`/playlist/track/all?id=${lid}`);
+    console.log('Playlistsongs', res);
+    dispatch({type:'getPlayListSongs', data:res.data.songs})
+  }
+}

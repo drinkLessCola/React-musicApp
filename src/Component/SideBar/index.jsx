@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import SongListBlock from './SongListBlock';
 import './index.css';
-export default class SideBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-  render() {
-    return (
-      <div className="SideBar">
-        <SongListBlock list={this.props.list} />
-      </div>
-    );
-  }
+import { connect } from 'react-redux';
+function SideBar(props) {
+  const { playlist } = props;
+  console.log('sideBar', playlist)
+  return (
+    <div className="SideBar">
+      <SongListBlock playlist={playlist} />
+    </div>
+  );
 }
+export default connect(
+  state => ({ playlist: state.user.playlist }),
+  {}
+)(SideBar);

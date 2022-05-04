@@ -36,7 +36,6 @@ export default class PlayListBoard extends Component {
               })}
             </tbody>
           </table>
-
       </div>
     )
   }

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import Liked from '../../../../Liked';
+import './index.css'
 export default class Songs extends Component {
   timeFormat(time) {
+    time = Math.floor(time / 1000);
     let min = Math.floor(time / 60),
       sec = time % 60;
     return ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
   }
   render() {
-    console.log(this.props);
+    console.log("Songs", this.props);
     const { songs } = this.props;
     return (
       <table className="SongListPageSongs">
@@ -22,16 +24,16 @@ export default class Songs extends Component {
           </tr>
         </thead>
         <tbody>{
-          songs.map((s, idx) => (
+          songs && songs.map((s, idx) => (
             <tr key={idx}>
-              <td className='list-idx'>{"0" + (idx + 1)}</td>
+              <td className='list-idx'>{((idx < 9)? "0": "") + (idx + 1)}</td>
               <td>
                 <Liked like={s.like} />
               </td>
               <td className='list-name'>{s.name}</td>
               <td>{s.singer}</td>
               <td>{s.album}</td>
-              <td className='list-time'>{this.timeFormat(s.time)}</td>
+              <td className='list-time'>{this.timeFormat(s.dt)}</td>
             </tr>
           ))
         }</tbody>
