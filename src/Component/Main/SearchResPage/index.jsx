@@ -1,14 +1,10 @@
-import React, { Component } from 'react'
-import { NavLink, Route } from 'react-router-dom'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './index.css';
-import SearchResSongs from './SearchResSongs';
-import SearchResVideos from './SearchResVideos'
-import SearchResArtists from './SearchResArtists';
 import { createSearchAction } from '../../../Redux/searchActions';
 import { connect } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 function SearchResPage(props){
   const location = useLocation();

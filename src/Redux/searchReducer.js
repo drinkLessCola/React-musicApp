@@ -18,6 +18,10 @@ const initState = {
   },
   playlist:{
     songs:[]
+  },
+  home:{
+    banners:[],
+    dailyRecommendList:[]
   }
 };
 // preState == undefined 初始化
@@ -30,6 +34,18 @@ export default function searchReducer(preState = initState, action) {
         {
           [data.type]: data.data[data.type],
         })
+    case 'banner':
+      return Object.assign({},preState,{
+        home:Object.assign({}, preState.home, {
+          banners:data
+        })
+      })
+    case 'dailyRecommendList':
+      return Object.assign({}, preState, {
+        home:Object.assign({}, preState.home, {
+          dailyRecommendList:data
+        })
+      })
     case 'addSong':
       const { songList, curIdx } = preState;
       console.log('addSong', songList , data);

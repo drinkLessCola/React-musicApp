@@ -14,7 +14,7 @@ function SongListPage(props) {
 
   const params = useParams();
   const listId = params.listid;
-  console.log("listId" , listId);
+  console.log("listId" , params, listId);
 
   useEffect(()=>{
     console.log('?');

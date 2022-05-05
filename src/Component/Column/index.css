@@ -1,0 +1,11 @@
+.column{
+  padding:1rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.column-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

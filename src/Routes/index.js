@@ -6,13 +6,17 @@ import SearchResSongs from "../Component/Main/SearchResPage/SearchResSongs";
 import SearchResVideos from "../Component/Main/SearchResPage/SearchResVideos";
 import SearchResArtists from "../Component/Main/SearchResPage/SearchResArtists";
 import Songs from "../Component/Main/SongListPage/Songs";
+import HomePage from "../Component/Main/HomePage";
 
 export default[
   {
     path:'/',
-    element:<Navigate to="/songlist/1"/>
+    element:<Navigate to="/home"/>
   },
-
+  {
+    path:'/home',
+    element:<HomePage/>,
+  },
   {
     path:'/songlist/:listid',
     element:<SongListPage/>,

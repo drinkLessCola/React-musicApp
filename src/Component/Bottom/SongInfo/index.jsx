@@ -5,7 +5,7 @@ import Liked from '../../../Liked';
 class SongInfo extends Component {
   render() {
     const {song} = this.props;
-    console.log(song);
+    console.log("@", song);
     if(song == null) return <div className="SongInfo"></div>;
     return (
       <div className="SongInfo">

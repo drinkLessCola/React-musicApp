@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import SoundIcon from '../../../Icons/SoundIcon'
 import PlayListIcon from '../../../Icons/PlayListIcon'
 import PubSub from 'pubsub-js'

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './index.css'
 import loginPic from '../../imgs/login.png';
 import { getLoginStateAction, loginAction, logoutAction } from '../../Redux/searchActions';

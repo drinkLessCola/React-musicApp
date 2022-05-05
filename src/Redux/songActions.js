@@ -2,6 +2,13 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://netease-cloud-music-api-tawny-nine.vercel.app/'
 axios.defaults.withCredentials = true
+
+export const getLikedSongsList = (uid) => {
+  return async (dispatch) => {
+    let res = await axios(`/likelist?uid=${uid}`)
+    console.log(res);
+  }
+}
 // 添加一首歌到播放列表
 export const addNewSongAction = (data) => {
   return async (dispatch) => {

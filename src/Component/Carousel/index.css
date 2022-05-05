@@ -1,0 +1,42 @@
+.carousel{
+  position: relative;
+  width:1000px;
+  margin:2rem;
+  height:200px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.carousel div{
+  position:absolute;
+  background-color: cornflowerblue;
+  height:200px;
+  width:550px;
+  transition:all .5s ease-in-out;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.carousel div img{
+  width:100%;
+}
+.carousel div[level="sub-left"]{
+  left:0;
+  transform:scale(.8) translateX(10%);
+  z-index:30;
+}
+.carousel div[level="sub-right"]{
+  transform: scale(.8) translateX(-20%);
+  left:50%;
+  z-index:30;
+}
+
+.carousel div[level="top"]{
+  z-index:50;
+  left:50%;
+  transform: translateX(-50%);
+}
+.carousel div[level="hide"]{
+  z-index:0;
+  left:0;
+  transform: scale(.8) translateX(50%);
+}

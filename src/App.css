@@ -3,13 +3,14 @@
 
   --myColor: #fff;
   --theme-bg-color: #fff;
-  --btn-color: #ec4141;
+  --btn-color: rgb(255, 202, 89);
   --sound-bar-height: 40px;
   --progress-bar-width: 0px;
   --buffer-bar-width:0px;
   --video-progress-bar-width: 100px;
   --login-width: 320px;
   --login-height: 450px;
+  --card-width:150px;
 }
 
 /* @media (min-width:576px) {
@@ -259,7 +260,8 @@ tBody tr:nth-child(odd) {
   padding: .5rem 1rem;
   font-size: 1.5rem;
   margin-left: 0;
-  border-left: 1px solid #ed5353;
+  /* border-left: 1px solid #ed5353; */
+  border-left: 1px solid gold;
   border-radius: 0 2rem 2rem 0;
 }
 

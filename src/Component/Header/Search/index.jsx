@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import SearchIcon from '../../../Icons/SearchIcon'
 import { createSearchAction } from '../../../Redux/searchActions';
 import {useNavigate} from 'react-router-dom';
