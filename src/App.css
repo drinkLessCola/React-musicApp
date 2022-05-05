@@ -11,6 +11,8 @@
   --login-width: 320px;
   --login-height: 450px;
   --card-width:150px;
+
+  --box-shadow-img:'';
 }
 
 /* @media (min-width:576px) {
@@ -89,6 +91,7 @@ input {
 }
 
 .App {
+  position:relative;
   max-width: 1250px;
   min-width: 900px;
   width: 96vw;

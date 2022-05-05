@@ -1,0 +1,80 @@
+.PlayerPage{
+  width:100%;
+  height:60%;
+  display: flex;
+  position:absolute;
+
+  top:0;
+  left:0;
+  
+  background-color: #f9f9f9;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+
+  overflow: hidden;
+}
+
+.player-lyric{
+  height:80%;
+  overflow-y: auto;
+  font-family:'PingFang SC Medium';
+  font-size:1.6rem;
+  background-color: yellow;
+}
+
+.player-cover{
+  height:100%;
+  display: flex;
+  align-items: center;
+}
+.player-cover-img{
+  height:250px;
+  width:250px;
+  background-color: #fff;
+  /* border: 40px solid black; */
+  /* box-shadow:15px 80px 100px -10px rgb(255, 226, 169),10px 50px 60px -20px rgba(255, 255, 0, 0.372),0 50px 40px 60px rgba(255, 255, 255, 0.591),0 0 0px 30px #fff, 0 0 0 32px rgb(255, 209, 144); */
+  border-radius:50%;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.player-cover-img img{
+  width: 100%;
+}
+
+.shadow-effect{
+  filter:blur(20px) saturate(1.5);
+  height:250px;
+  width:250px;
+  opacity: .6;
+  transform: translate(-95%, 40px);
+  border-radius:50%;
+}
+
+.bg-effect{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  filter:blur(300px) brightness(2);
+  transform: scale(2);
+  opacity: .6;
+}
+
+.player-song-name{
+  font-size: 2.5rem;
+  font-family: 'PingFang SC medium';
+  font-weight: normal;
+  color: #333;
+  text-align: center;
+}
+
+.player-right{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding:2rem 0;
+  box-sizing: border-box;
+  justify-content: center;
+}

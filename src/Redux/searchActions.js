@@ -76,9 +76,11 @@ export const getLoginStateAction = () => {
     let res = await axios('/login/status');
     console.log("loginState", res);
     const {account:{vipType, id}, profile} = res.data.data;
-    let playlist = await axios(`/user/playlist?uid=${id}`);
 
-    dispatch({type:'login', data: {user:profile, detail:profile, playlist:playlist.data.playlist}})
+    let playlist = await axios(`/user/playlist?uid=${id}`);
+    let likedList = await axios(`/likelist?uid=${id}`);
+
+    dispatch({type:'login', data: {user:profile, detail:profile, playlist:playlist.data.playlist, likedList:likedList.data.ids}})
   }
 }
 export const getUserDetail = (uid) => {

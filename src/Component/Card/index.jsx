@@ -7,7 +7,7 @@ export default function Card(props) {
       <div className='card-img'>
         <img src={picUrl}></img>
       </div>
-      <label className='card-info' for={id}>
+      <label className='card-info' htmlFor={id}>
         <p className='card-title'>{name}</p>
         <p className='card-author'></p>
       </label>

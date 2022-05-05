@@ -4,7 +4,7 @@ import Bottom from './Component/Bottom';
 import Header from './Component/Header';
 import Main from './Component/Main';
 import Login from './Component/Login';
-
+import PlayerPage from './Component/PlayerPage'
 
 import './App.css'
 import PlayListBoard from './Component/PlayListBoard';
@@ -161,7 +161,7 @@ function App(props) {
         mode={state.mode}
         songSrc={state.songSrc}
       />
-
+      <PlayerPage />
       {state.showLogin && <Login></Login>}
     </div>
   );

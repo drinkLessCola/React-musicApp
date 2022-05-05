@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import Liked from '../../../../Liked';
 import './index.css'
-export default function Songs(props) {
+function Songs(props) {
   const timeFormat = function (time) {
     time = Math.floor(time / 1000);
     let min = Math.floor(time / 60),
       sec = time % 60;
     return ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
   }
-
+  console.log(props.likedSongs);
   console.log("Songs",props);
   const { songs, replaceList } = props;
   return (
@@ -28,7 +29,7 @@ export default function Songs(props) {
           <tr key={idx} id={idx}>
             <td className='list-idx'>{((idx < 9) ? "0" : "") + (idx + 1)}</td>
             <td className='list-func'>
-              <Liked like={s.like} />
+              <Liked like={props.likedSongs.has(s.id)} />
             </td>
             <td className='list-name'>{s.name}</td>
             <td className='list-artists'>{s.ar.reduce((res, a) => (res == '' ? '' : res + ' / ') + a.name, "")}</td>
@@ -40,3 +41,12 @@ export default function Songs(props) {
     </table>
   );
 }
+
+export default connect(
+  (state)=>({
+    likedSongs:new Set(state.likedList)
+  }),
+  {
+
+  }
+)(Songs)

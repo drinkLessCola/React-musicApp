@@ -9,7 +9,9 @@ const initState = {
   songList: [],
   curIdx: 0,
   song:null,
+  lyric:'',
   video:null,
+  playerPageOpen:false,
   user:{
     loginState:false,
     user:null,
@@ -76,7 +78,8 @@ export default function searchReducer(preState = initState, action) {
         user:data.user,
         detail:data.detail,
         playlist:data.playlist
-      }
+      },
+      likedList:data.likedList
     });
     case 'loginState':return Object.assign({}, preState, {
       isLogin:data,
@@ -103,8 +106,11 @@ export default function searchReducer(preState = initState, action) {
     });
     case 'next': return Object.assign({}, preState, {
       curIdx:(+preState.curIdx) + 1,
-      song:preState.songList[
-        +preState.curIdx + 1]
+      song:preState.songList[+preState.curIdx + 1]
+    });
+    case 'togglePlayerPage': return Object.assign({}, preState, {
+      playerPageOpen:data.playerPageOpen,
+      lyric:data.lyric
     })
     default:
       return preState;
