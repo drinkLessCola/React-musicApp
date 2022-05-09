@@ -19,29 +19,36 @@
   border-radius:.5rem;
 }
 .SongName{
-  flex:0 1 160px;
+  flex:0 1 200px;
   padding:0 1rem;
   color:#333;
   box-sizing:border-box;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow:clip; 
+  overflow: hidden;
 }
 
 .SongName-name{
   display:flex;
   flex-direction:row;
+  justify-content: flex-start;
+  text-align: left;
   font-size:1.6rem;
   margin-bottom:.2rem;
+}
+.SongName-name p{
+  flex:0 1 160px;
+  white-space: nowrap; 
+  text-overflow:clip; 
+  overflow: hidden; 
 }
 .SongName-singer{
   font-size: 1.2rem;
 }
 
 .Like{
+  flex:1 0 2rem;
   width:2rem;
   height:2rem;
   margin-left:.5rem;
@@ -77,11 +84,18 @@
   height:1.8rem;
   vertical-align:top;
 }
-
+.Player-btn .icon path{
+  fill:rgb(123, 94, 67);
+}
 
 .play-icon{
   padding:1rem;
-  border-radius:50%;
+  border-radius:40%;
   box-sizing:content-box;
-  background-color:#eee;
+  background-color:var(--btn-color);
+  box-shadow: 0 5px 20px -10px orange;
+}
+
+.play-icon .icon path{
+  fill:#fff;
 }

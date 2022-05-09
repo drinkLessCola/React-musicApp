@@ -76,9 +76,10 @@
 
 } */
 .active-list{
-  background-color: var(--btn-color);
+  background-image: linear-gradient(rgb(255, 211, 116),var(--btn-color));
   color:#fff;
   font-size: 1.5rem;
+  box-shadow: 0 5px 20px -10px var(--btn-color);
 }
 
 .active-list:hover{

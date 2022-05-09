@@ -60,22 +60,23 @@ export const loginAction = (phone, password) => {
     }
     // 登录成功
     console.log("登录成功")
-    const {account:{vipType, id}, cookie, profile:{avatarUrl, nickname} } = res.data;
+    const {account:{vipType, id}, cookie, profile} = res.data;
     let detail = await axios(`/user/detail?uid=${id}`);
     let playlist = await axios(`/user/playlist?uid=${id}`);
+    let likedList = await axios(`/likelist?uid=${id}`);
     let loginState = await axios('/login/status');
 
     console.log('loginState', loginState);
     console.log('detail', detail);
     console.log('playlist', playlist);
-    dispatch({type:'login', data: {loginState, user:res.data.profile, detail:detail.data, playlist:playlist.data.playlist}})
+    dispatch({type:'login', data: {user:profile, detail:profile, playlist:playlist.data.playlist, likedList:likedList.data.ids}})
   }
 }
 export const getLoginStateAction = () => {
   return async (dispatch) => {
     let res = await axios('/login/status');
     console.log("loginState", res);
-    const {account:{vipType, id}, profile} = res.data.data;
+    const {account:{id}, profile} = res.data.data;
 
     let playlist = await axios(`/user/playlist?uid=${id}`);
     let likedList = await axios(`/likelist?uid=${id}`);

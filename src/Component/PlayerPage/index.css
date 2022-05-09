@@ -1,18 +1,38 @@
 .PlayerPage{
   width:100%;
-  height:60%;
+  height:100%;
   display: flex;
   position:absolute;
 
-  top:0;
+  top:100%;
   left:0;
-  
   background-color: #f9f9f9;
   justify-content: space-around;
   align-items: center;
   z-index: 100;
-
   overflow: hidden;
+  transition:all .3s ease-in;
+}
+
+.active{
+  top:0;
+}
+
+.close-btn{
+  position: absolute;
+  width:4rem;
+  height:4rem;
+  top:0;
+  left:0;
+  margin:2rem;
+  padding:1rem;
+  font-size: 2rem;
+  border-radius: 50%;
+  background-color: #efefef;
+  color:#555;
+  text-align: center;
+  /* background-color: rgb(255, 223, 164);
+  box-shadow: 0 10px 10px 0px rgba(255, 166, 0, .4) ; */
 }
 
 .player-lyric{
@@ -20,35 +40,78 @@
   overflow-y: auto;
   font-family:'PingFang SC Medium';
   font-size:1.6rem;
-  background-color: yellow;
+  text-align: center;
+  /* background-color: yellow; */
 }
+.player-lyric p{
+  /* margin: .5rem 0; */
+  min-height:30px;
+  line-height: 30px;
+  color:#666;
+  /* transition: all .2s ease-in; */
 
+}
 .player-cover{
   height:100%;
-  display: flex;
+  position: relative;
   align-items: center;
+  width:300px;
 }
 .player-cover-img{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
   height:250px;
   width:250px;
   background-color: #fff;
-  /* border: 40px solid black; */
   /* box-shadow:15px 80px 100px -10px rgb(255, 226, 169),10px 50px 60px -20px rgba(255, 255, 0, 0.372),0 50px 40px 60px rgba(255, 255, 255, 0.591),0 0 0px 30px #fff, 0 0 0 32px rgb(255, 209, 144); */
   border-radius:50%;
-  overflow: hidden;
+  /* overflow: hidden; */
   z-index: 50;
 }
+.player-cover-img::before{
+  content:'';
+  height:280px;
+  width:280px;
+  display: block;
+  position:relative;
+  top:50%;
+  left:50%; 
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow:0 0 20px 0 rgba(132, 132, 132, 0.5);
+  box-sizing: border-box;
+  mix-blend-mode: multiply;
+}
+/* .player-cover-img::after{
+  content:'';
+  width:50px;
+  height:50px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+} */
 
 .player-cover-img img{
   width: 100%;
+  border-radius:50%;
+  transform: translate(0, -280px);
 }
 
 .shadow-effect{
+  position:absolute;
   filter:blur(20px) saturate(1.5);
   height:250px;
   width:250px;
   opacity: .6;
-  transform: translate(-95%, 40px);
+  transform: translate(-45%,-35%);
+  left:50%;
+  top:50%;
   border-radius:50%;
 }
 
@@ -72,9 +135,17 @@
 
 .player-right{
   display: flex;
+  flex:0 1 50%;
+  white-space: wrap;
   flex-direction: column;
   height: 100%;
   padding:2rem 0;
   box-sizing: border-box;
   justify-content: center;
+}
+
+p.lyric-active{
+  font-family: 'PingFang SC Semibold';
+  font-size: 2rem;
+  color:#000;
 }

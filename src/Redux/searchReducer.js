@@ -8,23 +8,24 @@
 const initState = {
   songList: [],
   curIdx: 0,
-  song:null,
-  lyric:'',
-  video:null,
-  playerPageOpen:false,
-  user:{
-    loginState:false,
-    user:null,
-    detail:null,
-    playlist:[]
+  song: null,
+  lyric: [],
+  video: null,
+  playerPageOpen: false,
+  user: {
+    loginState: false,
+    user: null,
+    detail: null,
+    playlist: []
   },
-  playlist:{
-    songs:[]
+  playlist: {
+    songs: []
   },
-  home:{
-    banners:[],
-    dailyRecommendList:[]
-  }
+  home: {
+    banners: [],
+    dailyRecommendList: []
+  },
+  curTime: 0
 };
 // preState == undefined 初始化
 export default function searchReducer(preState = initState, action) {
@@ -37,20 +38,20 @@ export default function searchReducer(preState = initState, action) {
           [data.type]: data.data[data.type],
         })
     case 'banner':
-      return Object.assign({},preState,{
-        home:Object.assign({}, preState.home, {
-          banners:data
+      return Object.assign({}, preState, {
+        home: Object.assign({}, preState.home, {
+          banners: data
         })
       })
     case 'dailyRecommendList':
       return Object.assign({}, preState, {
-        home:Object.assign({}, preState.home, {
-          dailyRecommendList:data
+        home: Object.assign({}, preState.home, {
+          dailyRecommendList: data
         })
       })
     case 'addSong':
       const { songList, curIdx } = preState;
-      console.log('addSong', songList , data);
+      console.log('addSong', songList, data);
       // 这两句要分开写！！
       let newSongList = Array.from(songList)
       newSongList.splice(curIdx, 0, data);
@@ -60,58 +61,62 @@ export default function searchReducer(preState = initState, action) {
         {
           songList: newSongList,
           curIdx: curIdx + 1,
-          song:data,
+          song: data.song,
+          lyric: data.lyric
         });
-    case 'replaceList': return Object.assign({},preState,
+    case 'replaceList': return Object.assign({}, preState,
       {
-        songList:data.songs,
-        curIdx:data.id,
-        song:data.songs[data.id]
+        songList: data.songs,
+        curIdx: data.id,
+        song: data.songs[data.id]
       })
-    case 'watchMV':return Object.assign({},preState,{
-      video:data.video,
-      duration:data.duration
+    case 'watchMV': return Object.assign({}, preState, {
+      video: data.video,
+      duration: data.duration
     });
-    case 'login':return Object.assign({}, preState, {
-      user:{
-        loginState:data.loginState,
-        user:data.user,
-        detail:data.detail,
-        playlist:data.playlist
+    case 'login': return Object.assign({}, preState, {
+      user: {
+        loginState: data.loginState,
+        user: data.user,
+        detail: data.detail,
+        playlist: data.playlist
       },
-      likedList:data.likedList
+      likedList: data.likedList
     });
-    case 'loginState':return Object.assign({}, preState, {
-      isLogin:data,
+    case 'loginState': return Object.assign({}, preState, {
+      isLogin: data,
     });
     case 'getPlayListAction': return Object.assign({}, preState, {
-      playlist:Object.assign({}, preState.playlist,{
-        name:data.name,
-        coverImgUrl:data.coverImgUrl,
-        tags:data.tags,
-        creator:data.creator,
+      playlist: Object.assign({}, preState.playlist, {
+        name: data.name,
+        coverImgUrl: data.coverImgUrl,
+        tags: data.tags,
+        creator: data.creator,
       }),
     })
     case 'getPlayListSongs': return Object.assign({}, preState, {
-      playlist:Object.assign({}, preState.playlist, {
-        songs:data,
+      playlist: Object.assign({}, preState.playlist, {
+        songs: data,
       })
     });
     case 'getSinger': ; break;
     case 'getAlbums': ; break;
-    case 'prev': return Object.assign({}, preState, {
-      curIdx:(+preState.curIdx) - 1,
-      song:preState.songList[
-        +preState.curIdx - 1]
-    });
-    case 'next': return Object.assign({}, preState, {
-      curIdx:(+preState.curIdx) + 1,
-      song:preState.songList[+preState.curIdx + 1]
+    case 'shift': return Object.assign({}, preState, {
+      curIdx: data.idx,
+      song: preState.songList[data.idx],
+      lyric:data.lyric
     });
     case 'togglePlayerPage': return Object.assign({}, preState, {
-      playerPageOpen:data.playerPageOpen,
-      lyric:data.lyric
-    })
+      playerPageOpen: !preState.playerPageOpen,
+    });
+    case 'lyric': return Object.assign({}, preState, {
+      lyric: data
+    });
+    case 'updateCurTime':
+      console.log('timer', data);
+      return Object.assign({}, preState, {
+        curTime: data
+      });
     default:
       return preState;
   }

@@ -10,13 +10,12 @@ import ModeIcon4 from '../../../Icons/ModeIcon4';
 import PlayIcon from '../../../Icons/PlayIcon';
 import PubSub from 'pubsub-js';
 import { connect } from 'react-redux';
-import { next, prev } from '../../../Redux/songActions';
+import { shiftAction, updateCurTimeAction } from '../../../Redux/songActions';
 
 class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curTime: 0,
       pause: true,
       isHandling: false,
     };
@@ -50,16 +49,13 @@ class Player extends Component {
     } 
 
     if (isHandling) return;
-    
+    this.props.updateCurTime(cur);
     let bufferWidth = 0;
     if(audio.readyState == 4){
       let buffered = audio.buffered.end(0) / audio.duration;
       bufferWidth = ( buffered * 350) || 0;
       document.documentElement.style.setProperty('--buffer-bar-width', bufferWidth + 'px');
     }
-    this.setState({
-      curTime: cur,
-    })
     // 如果正在调整播放进度，则不改变进度条的长度
     const width = Math.floor(cur / audio.duration * 350) || 0;
     // 修改 css 变量 感觉会影响性能
@@ -69,7 +65,10 @@ class Player extends Component {
   // 用户改变 audio 播放进度
   handleProgressChange = (newProgress) => {
     this.audio.current.currentTime = newProgress;
+    this.props.updateCurTime(newProgress);
   }
+
+
   // 当前歌曲播放结束
   handleEnded = (e) => {
     // switch(this.props.mode){
@@ -78,10 +77,14 @@ class Player extends Component {
     this.next();
   }
   prev = () => {
-    this.props.prev();
+    const {shift, curIdx, songs} = this.props;
+    const newIdx = ((+curIdx - 1 < 0)? songs.length - 1 : +curIdx - 1);
+    shift(newIdx, songs[newIdx].id);
   }
   next = () => {
-    this.props.next();
+    const {shift, curIdx, songs} = this.props;
+    const newIdx = ((+curIdx + 1 > songs.length - 1)? 0 : +curIdx + 1);
+    shift(newIdx, songs[newIdx].id);
   }
   calcProgress = (width) => {
     const newProgress = Math.floor((width || 0) * this.ratio);
@@ -95,7 +98,7 @@ class Player extends Component {
     let isClick = true;
 
     const that = this;
-    const { time: totalTime } = this.props;
+    const { time: totalTime, updateCurTime } = this.props;
     const top = event.target.closest('.Progress-slider-top');
     const bar = event.target.closest('.Progress-slider');
     const barCoord = bar.getBoundingClientRect();
@@ -132,9 +135,7 @@ class Player extends Component {
       width = width < 350 ? width : 350;
       width = width > 0 ? width : 0;
 
-      that.setState({
-        curTime: Math.floor(width * that.ratio),
-      })
+      updateCurTime(Math.floor(width * that.ratio));
       document.documentElement.style.setProperty('--progress-bar-width', width + 'px');
     }
 
@@ -166,12 +167,11 @@ class Player extends Component {
   }
   render() {
     // const hasSourse = (this.props.songSrc == '') ? false : true;
-    const { mode, songSrc, song } = this.props;
-    const { curTime, isHandling, pause } = this.state;
+    const { mode, songSrc, song, curTime } = this.props;
+    const { isHandling, pause } = this.state;
 
     // 歌曲总的时间
     const totalTime = Math.floor(song?.dt/1000) || 0 ;
-    console.log("totalTime", totalTime);
     const id = (song)? song.id : undefined;
     // 一秒对应的进度条长度
     this.ratio = totalTime / 350;
@@ -223,10 +223,13 @@ class Player extends Component {
 
 export default connect(
   state => ({
-    song:state.song
+    songs:state.songList,
+    song:state.song,
+    curIdx:state.curIdx,
+    curTime:state.curTime
   }),
   {
-    next:next,
-    prev:prev
+    shift:shiftAction,
+    updateCurTime:updateCurTimeAction
   }
 )(Player)

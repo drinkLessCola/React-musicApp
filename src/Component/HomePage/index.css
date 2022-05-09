@@ -1,0 +1,13 @@
+.home-page{
+  position:relative;
+  flex:1;
+  width:100%;
+  padding:2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  overflow-y: auto;
+}
+
+

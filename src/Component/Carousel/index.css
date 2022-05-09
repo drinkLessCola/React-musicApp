@@ -8,7 +8,7 @@
 }
 .carousel div{
   position:absolute;
-  background-color: cornflowerblue;
+  background-color: #bbb;
   height:200px;
   width:550px;
   transition:all .5s ease-in-out;
@@ -34,6 +34,7 @@
   z-index:50;
   left:50%;
   transform: translateX(-50%);
+  background-color: #ededed;
 }
 .carousel div[level="hide"]{
   z-index:0;

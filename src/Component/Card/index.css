@@ -4,6 +4,7 @@
   margin:2rem 1rem 0 1rem;
 }
 .card-img{
+  position: relative;
   width:var(--card-width);
   height:var(--card-width);
   overflow: hidden;
@@ -26,4 +27,22 @@
   line-height: 2rem;
   font-size: 1.5rem;
   word-break: break-all;
+}
+.card-play-btn{
+  opacity: 0;
+  position:absolute;
+  bottom:1rem;
+  right:1rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  width:30px;
+  height:30px;
+  z-index: 50;
+  padding:.6rem .5rem .6rem .7rem;
+  box-sizing: border-box;
+  border-radius: 50%;
+  transition:all .2s ease-in-out;
+}
+
+.card:hover .card-play-btn{
+  opacity: 1;
 }

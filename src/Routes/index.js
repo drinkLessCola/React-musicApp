@@ -6,7 +6,7 @@ import SearchResSongs from "../Component/Main/SearchResPage/SearchResSongs";
 import SearchResVideos from "../Component/Main/SearchResPage/SearchResVideos";
 import SearchResArtists from "../Component/Main/SearchResPage/SearchResArtists";
 import Songs from "../Component/Main/SongListPage/Songs";
-import HomePage from "../Component/Main/HomePage";
+import HomePage from "../Component/HomePage";
 
 export default[
   {
