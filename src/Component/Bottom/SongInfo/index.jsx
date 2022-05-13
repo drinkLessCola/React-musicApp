@@ -9,6 +9,7 @@ class SongInfo extends Component {
     document.documentElement.style.setProperty('--box-shadow-img', this.props.song.al.imgUrl)
   }
   render() {
+    console.log('--------BOTTOM->SONGINFO render---------')
     const {song, likedSongs} = this.props;
     if(song == null) return <div className="SongInfo"></div>;
     return (

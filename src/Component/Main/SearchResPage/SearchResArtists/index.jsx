@@ -11,6 +11,7 @@ class SearchResSingers extends Component {
     return ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
   }
   render() {
+    console.log('--------MAIN -> SEARCHRESSINGERS render---------')
     let {artists} = this.props;
     artists = artists || [];
     console.log('ResArtists',artists);

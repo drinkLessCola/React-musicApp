@@ -4,7 +4,7 @@ import { createSearchAction } from '../../../Redux/searchActions';
 import {useNavigate} from 'react-router-dom';
 import {connect} from 'react-redux'
 function Search(props){
-
+  console.log('--------HEADER -> SEARCH render---------')
   const navigate = useNavigate();
 
   function getData(value, type){

@@ -11,6 +11,7 @@ const TYPE = [
   "收藏的歌单"
 ]
 function SongListBlock(props) {
+  console.log('-------SIDEBAR -> SONGLISTBLOCK render---------')
   function changePage(e) {
     console.log("changePage", e)
     const target = e.target.closest('li');

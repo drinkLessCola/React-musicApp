@@ -9,6 +9,7 @@ export default class PlayListBoard extends Component {
     return ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
   }
   render() {
+    console.log('--------PLAYLISTBOARD render---------')
     const { songList } = store.getState();
     console.log('songList', songList);
     return (

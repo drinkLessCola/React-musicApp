@@ -10,7 +10,7 @@ import './index.css';
 
 
 function SongListPage(props) {
-  console.log("newSongListPage")
+  console.log('--------MAIN -> SONGLISTPAGE render---------')
 
   const params = useParams();
   const listId = params.listid;

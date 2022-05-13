@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getMvAction } from '../../../../Redux/searchActions';
 import './index.css';
 function SearchResVideos(props) {
+  console.log('--------MAIN -> SEARCHRESVIDEOS render---------')
   const navigate = useNavigate();
 
   function timeFormat(time) {

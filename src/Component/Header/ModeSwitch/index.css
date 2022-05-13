@@ -1,0 +1,49 @@
+.ModeSwitch {
+  --switch-width:40px;
+  --switch-height:26px;
+  --switch-padding:2px;
+  --switch-btn-diameter:22px;
+  --switch-toggle-width:26px;
+
+  position: relative;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  margin: 0 10px;
+  background-color: var(--btn-color);
+  border-radius:calc(var(--switch-height) / 2);
+  box-sizing: border-box;
+  /* border:3px solid #ddd; */
+  overflow: hidden;
+  transition:all .2s ease-in-out;
+}
+
+.ModeSwitch::after {
+  content:'';
+  position: absolute;
+  width: var(--switch-btn-diameter);
+  height:var(--switch-btn-diameter);
+  top:var(--switch-padding);
+  transform:translateX(var(--switch-padding));
+  border-radius: calc(var(--switch-btn-diameter) / 2);
+  background-color:#fff;
+  transition:all .2s ease-in-out;
+}
+
+#switch{
+  display: none;
+}
+
+#switch:checked + .ModeSwitch{
+  background-color:blueviolet;
+}
+#switch:checked + .ModeSwitch::after{
+  transform:translateX(calc(var(--switch-width) - var(--switch-padding) - var(--switch-btn-diameter)));
+}
+
+/* #switch:active + .ModeSwitch::after {
+  width:var(--switch-toggle-width);
+}
+
+#switch:checked:active + .ModeSwitch::after{
+  transform:translateX(calc(var(--switch-width) - var(--switch-padding) - var(--switch-toggle-width)));
+} */

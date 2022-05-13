@@ -4,6 +4,7 @@ import loginPic from '../../imgs/login.png';
 import { getLoginStateAction, loginAction, logoutAction } from '../../Redux/searchActions';
 import { connect } from 'react-redux';
 function Login(props){
+  console.log('--------LOGIN render---------')
   let phone, password;
   function login(e){
       e.preventDefault();

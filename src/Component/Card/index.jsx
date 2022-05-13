@@ -7,6 +7,7 @@ import { getPlayListSongsAction } from '../../Redux/searchActions';
 import { useRoutes } from 'react-router-dom';
 
 export default function Card(props) {
+  console.log('--------CARD render---------')
   const {picUrl, name, id} = props;
   const navigate = useNavigate()
 

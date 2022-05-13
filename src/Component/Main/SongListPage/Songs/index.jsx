@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Liked from '../../../../Liked';
 import './index.css'
 function Songs(props) {
+  console.log('--------MAIN -> SONGS render---------')
   const timeFormat = function (time) {
     time = Math.floor(time / 1000);
     let min = Math.floor(time / 60),

@@ -7,6 +7,7 @@ import Card from '../Card';
 import './index.css'
 
 function HomePage(props) {
+  console.log('--------HOMEPAGE render---------')
   useEffect(()=>{
     props.getBanner();
     props.getDailyRecommendList();

@@ -5,6 +5,7 @@ import Func from './Func';
 import './index.css';
 export default class Bottom extends Component {
   render() {
+    console.log('--------BOTTOM render---------')
     return (
       <div className="Bottom">
         <SongInfo/>

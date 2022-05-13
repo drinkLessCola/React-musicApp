@@ -5,6 +5,7 @@ import { getLyricAction } from '../../Redux/songActions'
 import './index.css'
 
 function PlayerPage(props) {
+  console.log('--------PLAYERPAGE render---------')
   const { playerPageOpen = false, song, curTime } = props;
   const lyric = useRef(null);
   console.log("playerPageOpen", playerPageOpen)

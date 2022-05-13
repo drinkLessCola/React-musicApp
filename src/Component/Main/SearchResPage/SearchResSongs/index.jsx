@@ -25,6 +25,7 @@ class SearchResSongs extends Component {
     this.props.addNewSongAction(id);
   }
   render() {
+    console.log('--------MAIN -> SEARCHRESSONGS render---------')
     let songs = this.props.songs || [];
     console.log('ResSongs',songs);
     return (

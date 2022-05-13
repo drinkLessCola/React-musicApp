@@ -166,6 +166,7 @@ class Player extends Component {
     console.log("seeked", event.target.buffered)
   }
   render() {
+    console.log('--------BOTTOM -> PLAYER render---------')
     // const hasSourse = (this.props.songSrc == '') ? false : true;
     const { mode, songSrc, song, curTime } = this.props;
     const { isHandling, pause } = this.state;

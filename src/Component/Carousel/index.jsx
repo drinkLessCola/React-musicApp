@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './index.css';
 const imgNums = 9;
 export default function Carousel(props) {
+  console.log('--------CAROUSEL render---------')
   const [curIdx, setCurIdx ] = React.useState(0)
 
   useEffect(()=>{

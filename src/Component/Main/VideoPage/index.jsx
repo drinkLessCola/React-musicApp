@@ -8,6 +8,7 @@ import Progress from '../../Bottom/Progress';
 import './index.css';
 
 function VideoPage(props){
+  console.log('--------MAIN -> VIDEOPAGE render---------')
   const video = React.createRef();
   const [state, setState] = React.useState({
     curTime: 0,

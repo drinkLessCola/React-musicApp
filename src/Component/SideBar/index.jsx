@@ -4,6 +4,7 @@ import './index.css';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 function SideBar(props) {
+  console.log('--------SIDEBAR render---------')
   const { playlist, uid } = props;
   console.log('sideBar', playlist)
   return (

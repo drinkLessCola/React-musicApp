@@ -6,6 +6,7 @@ import SearchResPage from './SearchResPage';
 import { Route, Routes, Navigate, Outlet, BrowserRouter, useRoutes } from 'react-router-dom';
 import routeTable from '../../Routes/index'
 export default function Main(props){
+  console.log('--------MAIN render---------')
     const [state, setState] = React.useState({
       songList: props.songList,
       songs:null,

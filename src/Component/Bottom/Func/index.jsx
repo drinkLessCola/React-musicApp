@@ -4,6 +4,7 @@ import PlayListIcon from '../../../Icons/PlayListIcon'
 import PubSub from 'pubsub-js'
 import './index.css';
 export default function Func(props) {
+  console.log('--------BOTTOM -> FUNC render---------')
   const ctr = React.createRef();
 
   function handleClick(event) {

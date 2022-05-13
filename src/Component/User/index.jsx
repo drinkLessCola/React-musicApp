@@ -4,6 +4,7 @@ import LogOutAvatar from '../../Icons/LogOutAvatar'
 import { connect } from 'react-redux';
 
 export default function User(props){
+  console.log('--------USER render---------')
     const {user = null} = props;
     console.log("User", user)
     return (

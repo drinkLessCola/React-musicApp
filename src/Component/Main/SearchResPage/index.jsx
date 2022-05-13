@@ -7,6 +7,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 
 function SearchResPage(props){
+  console.log('--------MAIN -> SEARCHRESPAGE render---------')
   const location = useLocation();
   const [state, setState] = React.useState({
     searchData:'Rick and Morty',

@@ -29,6 +29,7 @@ export default class Progress extends Component {
 
   // 想知道这么写会不会影响性能...
   render() {
+    console.log('--------BOTTOM -> PROGRESS render---------')
     const { totalTime, curTime, handleMouseDown, timeStyle } = this.props;
     const totalTimeMin = Math.floor(totalTime / 60),
       totalTimeSec = totalTime % 60,
