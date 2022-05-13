@@ -4,7 +4,7 @@
   justify-content: flex-end;
 }
 .Search{
-  background-color:#eee;
+  background-color:var(--input-color);
   padding:.8rem 1.5rem;
   border-radius: 2rem;
   display: flex;

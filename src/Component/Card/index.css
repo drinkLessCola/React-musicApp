@@ -9,7 +9,7 @@
   height:var(--card-width);
   overflow: hidden;
   border-radius: 1rem;
-  box-shadow:0 40px 60px -20px rgba(255, 193, 111, 0.5);
+  box-shadow:0 40px 60px -20px var(--effect-shadow-color);
 }
 .card-img img{
   width:100%;

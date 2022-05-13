@@ -1,9 +1,29 @@
 :root {
   font-size: 10px;
 
-  --myColor: #fff;
-  --theme-bg-color: #fff;
+  --bg-color: #fefefe;
+  --nav-color: #fff;
+  --hover-color: #f0f1f2;
+  --text-color: #555;
+  --title-color:#aaa;
+  --table-text-color:#888;
+  --table-stripe-color:#f9f9f9;
+  --active-color:seashell;
+  --active-color2:rgb(255, 187, 29);
+  --active-text-color:orange;
   --btn-color: rgb(255, 202, 89);
+  --btn-light-color:rgb(255, 211, 116);
+  --btn-text-color:#333;
+  --h-color:black;
+  --icon-color:#2c2c2c;
+  --like-icon-color:#ec4141;
+  --input-color:#eee;
+  --player-icon-color:rgb(123, 94, 67);
+  --effect-shadow-color:rgba(255, 193, 111, 0.5);
+  --box-shadow-color:#dfdfdf;
+  --progress-color:#eee;
+  --controller-color:#fff;
+
   --sound-bar-height: 40px;
   --progress-bar-width: 0px;
   --buffer-bar-width:0px;
@@ -38,7 +58,27 @@ body {
 }
 
 body[data-theme="dark"] {
-  --myColor: '#333';
+  --bg-color: #292b30;
+  --nav-color: #272930;
+  --hover-color: #1c1f26;
+  --text-color:#ddd;
+  --title-color:#bbb;
+  --active-color:		rgb(91, 46, 53);
+  --active-text-color:rgb(255, 128, 134);
+  --active-color2:#f74a53;
+  --btn-color: 	#fe556a;
+  --btn-light-color:#f86767;
+  --table-text-color:#aaa;
+  --table-stripe-color:#292b30;
+  --btn-text-color:#ccc;
+  --h-color:#efefef;
+  --icon-color:#d1d1d1;
+  --input-color:#333;
+  --player-icon-color:rgb(213, 115, 129);
+  --effect-shadow-color:rgba(202, 76, 99, 0.5);
+  --progress-color:#555;
+  --box-shadow-color:#111;
+  --controller-color:#333;
 }
 
 * {
@@ -58,6 +98,10 @@ th {
   font-weight: normal;
 }
 
+h1,h2,p{
+  color:var(--h-color);
+}
+
 button {
   border: none;
   cursor:pointer;
@@ -65,7 +109,7 @@ button {
 
 a {
   text-decoration: none;
-  color: #333;
+  color:var(--btn-text-color);
 }
 
 input {
@@ -74,6 +118,7 @@ input {
   width: 10.5rem;
   outline: none;
   margin: 0 1rem;
+  color:var(--text-color);
 }
 
 /* 图片压缩 */
@@ -85,11 +130,15 @@ input {
 	-ms-interpolation-mode:nearest-neighbor;
 } */
 .icon {
-  fill: #2c2c2c;
   width: 100%;
   height: 100%;
 }
-
+.icon path{
+  fill: var(--icon-color);
+}
+.like path{
+  fill:var(--like-icon-color);
+}
 .App {
   position:relative;
   max-width: 1250px;
@@ -97,7 +146,7 @@ input {
   width: 96vw;
   height: 90%;
   min-height: 500px;
-  background-color: var(--theme-bg-color);
+  background-color: var(--bg-color);
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -110,7 +159,7 @@ input {
 .Header {
   width: 100%;
   height: 5rem;
-  background-color: #fff;
+  background-color: var(--nav-color);
   border-radius: 1rem 1rem 0 0;
   z-index: 50;
   flex-shrink: 0;
@@ -122,7 +171,7 @@ input {
   flex: 1 1;
   height: 100%;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--bg-color);
   display: flex;
   overflow: hidden;
   flex-direction: row;
@@ -147,7 +196,7 @@ table .icon {
 tHead tr {
   font-size: 1.3rem;
   text-align: left;
-  color: #888;
+  color: var(--table-text-color);
 }
 
 tr {
@@ -157,11 +206,11 @@ tr {
   border-collapse: collapse;
   font-size: 1.3rem;
   height: 3.5rem;
-  color: #666;
+  color: var(--table-text-color);
 }
 
-tBody tr:hover {
-  background-color: #f0f1f2 !important;
+table tBody tr:hover {
+  background-color: var(--hover-color);
 }
 
 td {
@@ -193,7 +242,7 @@ td {
 
 .list-name {
   flex: 0 1 400px;
-  color: #444;
+  color: var(--text-color);
 }
 
 .list-time {
@@ -212,7 +261,7 @@ td {
 
 /* 奇数浅灰背景 */
 tBody tr:nth-child(odd) {
-  background-color: #f9f9f9;
+  background-color: var(--table-stripe-color);
 }
 
 
@@ -227,8 +276,8 @@ tBody tr:nth-child(odd) {
 .SongListPageFunc>button {
   height: 3rem;
   outline: 1px solid #c8c8c8;
-  background-color: #fff;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--btn-text-color);
   font-size: 1.4rem;
   padding: .6rem 1.5rem;
   margin: 0 .5rem;

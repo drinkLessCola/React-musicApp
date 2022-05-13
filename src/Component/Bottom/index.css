@@ -21,7 +21,7 @@
 .SongName{
   flex:0 1 200px;
   padding:0 1rem;
-  color:#333;
+  color:var(--text-color);
   box-sizing:border-box;
   display:flex;
   flex-direction:column;
@@ -85,7 +85,7 @@
   vertical-align:top;
 }
 .Player-btn .icon path{
-  fill:rgb(123, 94, 67);
+  fill:var(--player-icon-color);
 }
 
 .play-icon{

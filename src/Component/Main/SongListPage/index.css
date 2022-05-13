@@ -1,7 +1,7 @@
 .SongListPage {
   width:100%;
   display: flex;
-  background-color: #fff;
+  background-color: var(--bg-color);
   flex-direction: column;
   flex: 0 1;
   max-height: 100%;
@@ -11,7 +11,7 @@
 
 .SongListPageInfo {
   display: flex;
-  background-color: #fff;
+  background-color: var(--bg-color);
   margin: 2rem;
 }
 

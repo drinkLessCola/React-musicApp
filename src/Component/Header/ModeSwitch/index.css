@@ -34,7 +34,7 @@
 }
 
 #switch:checked + .ModeSwitch{
-  background-color:blueviolet;
+  background-color:var(--btn-color);
 }
 #switch:checked + .ModeSwitch::after{
   transform:translateX(calc(var(--switch-width) - var(--switch-padding) - var(--switch-btn-diameter)));

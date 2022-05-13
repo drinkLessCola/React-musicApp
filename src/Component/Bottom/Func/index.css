@@ -13,15 +13,9 @@
   position: relative;
   display: block;
 }
-.Func li:hover > .icon path{
-  fill:#333;
-  transition:all .5s ease-in-out;
-}
+
 .Func .icon{
   width:2.3rem;
-}
-.PlayListBorad{
-
 }
 
 /* margin 百分比相对于父元素的宽度！  */
@@ -37,8 +31,8 @@
   padding-bottom:10px;
   width:30px;
   height:90px;
-  background-color: #fff;
-  box-shadow:#dfdfdf 0 0 .8rem 0rem;
+  background-color: var(--controller-color);
+  box-shadow:0 0 .8rem 0rem var(--box-shadow-color);
   border-radius: .5rem;
   cursor:default;
   z-index:5;
@@ -46,7 +40,7 @@
 .soundController::before{
   content: '';
   position: absolute;
-  border-top: 10px solid #eee;
+  border-top: 10px solid var(--box-shadow-color);
   border-bottom: 10px solid transparent;
   border-left:10px solid transparent;
   border-right:10px solid transparent ;
@@ -62,7 +56,7 @@
 .soundController::after{
   content: '';
   position: absolute;
-  border-top: 10px solid #fff;
+  border-top: 10px solid var(--controller-color);
   border-bottom:10px solid transparent;
   border-left:6px solid transparent;
   border-right:6px solid transparent ;
@@ -81,7 +75,7 @@
   height:70px;
   margin-right:-4px;
   border-radius: .5rem;
-  background-color:#ddd;
+  background-color:var(--box-shadow-color);
 }
 .soundController-bar{
   position:relative;

@@ -40,18 +40,10 @@ function App(props) {
    */
    const toggleTheme = () => {
     console.log('【toggleTheme】')
-    console.log('【theme】', theme)
-    const isDark = (theme == 'dark');
-    console.log(isDark)
-    const bgColor = (isDark? '#fff' : '#202020');
-    const btnColor = (isDark? 'rgb(255, 202, 89)' : 'blueviolet');
-    document.documentElement.style.setProperty('--theme-bg-color', bgColor)
-    document.documentElement.style.setProperty('--btn-color', btnColor)
-    console.log(bgColor, btnColor)
-    reverseTheme(isDark);
-    setTheme(isDark?'light':'dark');
+    document.body.dataset.theme = (theme === 'dark')? 'light':'dark';
+    setTheme(oldTheme => (oldTheme === 'dark')? 'light' : 'dark');
   }
-  
+
   function showPlayList() {
     const { isPlayListShowing } = state;
     setState({
@@ -81,7 +73,7 @@ function App(props) {
   // React.useState
   return (
     <div className="App" onClick={handleClick}>
-      <ThemeContext.Provider value={{changeTheme:toggleTheme}}>
+      <ThemeContext.Provider value={{toggleTheme}}>
         {React.useMemo(() => <Header showLogin={showLogin}/>,[props.loginState])}
       </ThemeContext.Provider>
       <div className="main">
