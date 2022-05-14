@@ -13,6 +13,7 @@
   --active-text-color:orange;
   --btn-color: rgb(255, 202, 89);
   --btn-light-color:rgb(255, 211, 116);
+  --btn-dark-color:gold;
   --btn-text-color:#333;
   --h-color:black;
   --icon-color:#2c2c2c;
@@ -79,6 +80,7 @@ body[data-theme="dark"] {
   --progress-color:#555;
   --box-shadow-color:#111;
   --controller-color:#333;
+  --btn-dark-color:#e63f53;
 }
 
 * {
@@ -314,7 +316,7 @@ tBody tr:nth-child(odd) {
   font-size: 1.5rem;
   margin-left: 0;
   /* border-left: 1px solid #ed5353; */
-  border-left: 1px solid gold;
+  border-left: 1px solid var(--btn-dark-color);
   border-radius: 0 2rem 2rem 0;
 }
 

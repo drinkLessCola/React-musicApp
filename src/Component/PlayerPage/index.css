@@ -6,7 +6,7 @@
 
   top:100%;
   left:0;
-  background-color: #f9f9f9;
+  background-color: var(--bg-color);
   justify-content: space-around;
   align-items: center;
   z-index: 100;
@@ -80,8 +80,8 @@
   left:50%; 
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.15);
-  box-shadow:0 0 20px 0 rgba(132, 132, 132, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.15); */
+  /* box-shadow:0 0 20px 0 rgba(132, 132, 132, 0.5); */
   box-sizing: border-box;
   mix-blend-mode: multiply;
 }

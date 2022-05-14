@@ -26,7 +26,7 @@ export default function Func(props) {
   }
 
   return (
-    <ul className='Func'>
+    React.useMemo(() => <ul className='Func'>
       <li className='Sound'>
         <SoundIcon></SoundIcon>
         <div className='soundController' onClick={handleClick}>
@@ -39,6 +39,5 @@ export default function Func(props) {
       </li>
       <li className='PlayList' onClick={props.showPlayList}><PlayListIcon></PlayListIcon></li>
     </ul>
-  )
-
+    ))
 }

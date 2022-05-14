@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Liked from '../../../../Liked';
+import Menu from '../../../Menu';
 import './index.css'
 function Songs(props) {
   console.log('--------MAIN -> SONGS render---------')
@@ -9,6 +10,11 @@ function Songs(props) {
     let min = Math.floor(time / 60),
       sec = time % 60;
     return ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
+  }
+
+  function openContextMenu(e){
+    
+    e.preventDefault();
   }
   console.log(props.likedSongs);
   console.log("Songs",props);
@@ -25,7 +31,7 @@ function Songs(props) {
           <th className='list-time'>时间</th>
         </tr>
       </thead>
-      <tbody onDoubleClick={replaceList}>{
+      <tbody onDoubleClick={replaceList} onContextMenu={openContextMenu}>{
         songs && songs.map((s, idx) => (
           <tr key={idx} id={idx}>
             <td className='list-idx'>{((idx < 9) ? "0" : "") + (idx + 1)}</td>
