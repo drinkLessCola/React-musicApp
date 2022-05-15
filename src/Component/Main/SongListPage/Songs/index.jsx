@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Liked from '../../../../Liked';
-import Menu from '../../../Menu';
+import MenuContext from '../../../../Context/MenuContext';
 import './index.css'
+const menuItems = (<ul>
+  <li>播放</li>
+  <li>下一首播放</li>
+  <li>收藏到歌单</li>
+</ul>)
 function Songs(props) {
   console.log('--------MAIN -> SONGS render---------')
   const timeFormat = function (time) {
@@ -12,10 +17,6 @@ function Songs(props) {
     return ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
   }
 
-  function openContextMenu(e){
-    
-    e.preventDefault();
-  }
   console.log(props.likedSongs);
   console.log("Songs",props);
   const { songs, replaceList } = props;
@@ -31,20 +32,24 @@ function Songs(props) {
           <th className='list-time'>时间</th>
         </tr>
       </thead>
-      <tbody onDoubleClick={replaceList} onContextMenu={openContextMenu}>{
-        songs && songs.map((s, idx) => (
-          <tr key={idx} id={idx}>
-            <td className='list-idx'>{((idx < 9) ? "0" : "") + (idx + 1)}</td>
-            <td className='list-func'>
-              <Liked like={props.likedSongs.has(s.id)} />
-            </td>
-            <td className='list-name'>{s.name}</td>
-            <td className='list-artists'>{s.ar.reduce((res, a) => (res == '' ? '' : res + ' / ') + a.name, "")}</td>
-            <td className='list-album'>{s.al.name}</td>
-            <td className='list-time'>{timeFormat(s.dt)}</td>
-          </tr>
-        ))
-      }</tbody>
+      <MenuContext.Consumer>
+        {({toggleMenu}) => (
+          <tbody onDoubleClick={replaceList} onContextMenu={toggleMenu.bind(null,menuItems)}>{
+            songs && songs.map((s, idx) => (
+              <tr key={idx} id={idx}>
+                <td className='list-idx'>{((idx < 9) ? "0" : "") + (idx + 1)}</td>
+                <td className='list-func'>
+                  <Liked like={props.likedSongs.has(s.id)} />
+                </td>
+                <td className='list-name'>{s.name}</td>
+                <td className='list-artists'>{s.ar.reduce((res, a) => (res == '' ? '' : res + ' / ') + a.name, "")}</td>
+                <td className='list-album'>{s.al.name}</td>
+                <td className='list-time'>{timeFormat(s.dt)}</td>
+              </tr>
+            ))
+          }</tbody>
+        )}
+      </MenuContext.Consumer>
     </table>
   );
 }

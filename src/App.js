@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import SideBar from './Component/SideBar';
 import Bottom from './Component/Bottom';
 import Header from './Component/Header';
@@ -11,6 +11,8 @@ import { connect } from 'react-redux';
 import { getLoginStateAction } from './Redux/searchActions';
 
 import ThemeContext from './Context/ThemeContext';
+import MenuContext from './Context/MenuContext';
+import Menu from './Component/Menu';
 
 function App(props) {
   console.log('--------APP render---------')
@@ -34,7 +36,22 @@ function App(props) {
   console.log(user);
 
   const [theme, setTheme] = React.useState('light')
+  const [showContextMenu, setShowContextMenu] = React.useState(false)
+  const [coord, setCoord] = React.useState({x:0, y:0})
+  const [menuItems, setMenuItems] = React.useState(null);
+  const menu = useRef(null);
+  const MemoMenu = React.useMemo(() => <Menu ref={menu}>{menuItems}</Menu>,[menuItems])
   
+  useEffect(() => {
+    console.log(menu)
+    console.log(MemoMenu)
+    console.log(showContextMenu);
+    if(menu.current){
+      menu.current.style.left = coord.x + 'px';
+      menu.current.style.top = coord.y + 'px';
+    }
+  },[showContextMenu, coord]);
+ 
   /**
    * 修改主题模式
    */
@@ -43,7 +60,18 @@ function App(props) {
     document.body.dataset.theme = (theme === 'dark')? 'light':'dark';
     setTheme(oldTheme => (oldTheme === 'dark')? 'light' : 'dark');
   }
-
+  /**
+   * 显示右键菜单
+   */
+  function toggleMenu (menuItems, e){
+    e.preventDefault();
+    setShowContextMenu(true);
+    setCoord({
+      x:e.clientX,
+      y:e.clientY
+    })
+    setMenuItems(menuItems);
+  }
   function showPlayList() {
     const { isPlayListShowing } = state;
     setState({
@@ -76,11 +104,12 @@ function App(props) {
       <ThemeContext.Provider value={{toggleTheme}}>
         {React.useMemo(() => <Header showLogin={showLogin}/>,[props.loginState])}
       </ThemeContext.Provider>
-      <div className="main">
-        {React.useMemo(() => <SideBar list={props.playlist} /> ,[props.playList])}
-        <Main>
-        </Main>
-      </div>
+      <MenuContext.Provider value={{toggleMenu}}>
+        <div className="main">
+          {React.useMemo(() => <SideBar list={props.playlist} /> ,[props.playList])}
+          <Main />
+        </div>
+      </MenuContext.Provider>
       {React.useMemo(() => <Bottom
         showPlayList={showPlayList}
         changeMode={changeMode}
@@ -89,6 +118,7 @@ function App(props) {
       />, [])}
       <PlayerPage />
       {state.showLogin && <Login></Login>}
+      {showContextMenu && MemoMenu}
     </div>
   );
 

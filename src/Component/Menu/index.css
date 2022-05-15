@@ -1,6 +1,23 @@
 .Menu{
-  width:100px;
-  height:100px;
-  background-color: yellow;
+  display: block;
+  width:200px;
+  background-color: var(--controller-color);
   position:fixed;
+  left:-100%;
+  top:-100%;
+  z-index:200;
+  box-shadow:0 0px 12px 0px var(--box-shadow-color);
+  border-radius:10px;
+  overflow: hidden;
+}
+.menu-item{
+  /* border-bottom: 1px solid #888; */
+  font-size: 1.4rem;
+  color:var(--text-color);
+}
+.menu-item li{
+  padding:.8rem;
+}
+.menu-item li:hover{
+  background-color: var(--hover-color);
 }

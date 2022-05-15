@@ -1,7 +1,10 @@
 import React from 'react'
-
-export default function Menu() {
+import './index.css'
+function Menu(props,ref) {
   return (
-    <div className='Menu'></div>
+    <div className='Menu' ref={ref}>
+      <div className='menu-item'>{props.children}</div>
+    </div>
   )
 }
+export default React.forwardRef(Menu)
