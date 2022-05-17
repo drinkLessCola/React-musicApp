@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PlayListBoard from '../PlayListBoard'
 import PubSub from 'pubsub-js';
 import VideoPage from './VideoPage'
 import SongListPage from './SongListPage';
@@ -22,6 +23,7 @@ export default function Main(props){
             <Route path="/" element={<Navigate to='/songlist/1'></Navigate>}></Route>
           </Routes> */}
         <Outlet/>
+        {props.showPlaylist && <PlayListBoard></PlayListBoard>}
       </div>;
 
 }

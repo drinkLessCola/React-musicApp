@@ -37,7 +37,7 @@ export default function Func(props) {
           </div>
         </div>
       </li>
-      <li className='PlayList' onClick={props.showPlayList}><PlayListIcon></PlayListIcon></li>
+      <li className='PlayList' onClick={props.togglePlayList}><PlayListIcon></PlayListIcon></li>
     </ul>
     ))
 }

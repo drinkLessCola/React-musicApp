@@ -54,7 +54,8 @@ export default function searchReducer(preState = initState, action) {
       console.log('addSong', songList, data);
       // 这两句要分开写！！
       let newSongList = Array.from(songList)
-      newSongList.splice(curIdx, 0, data);
+      newSongList.filter(l => l.id !== data.id)
+      newSongList.splice(curIdx, 0, data.song);
 
       console.log('#', newSongList)
       return Object.assign({}, preState,

@@ -14,16 +14,23 @@ export const addNewSongAction = (data) => {
   return async (dispatch) => {
     let res = await axios(`/song/detail?ids=${data}`);
     let lyric = await axios(`/lyric?id=${res.data.songs[0].id}`);
-    let lyricArr = lyric.data.lrc.lyric.split('\n').map((l) => {
-      let [time, text] = l.split(']');
-      let [min, sec] = time.split(':');
+    let lastTime = 0;
+    let lyricArr = lyric.data.lrc.lyric.split('\n').reduce((resArr, l) => {
+      if (l == '') return resArr;
+      console.log("#", l);
+      let [t, text] = l.split(']');
+      t = t.slice(1);
+      let [min, sec] = t.split(':');
       min = parseInt(min);
       sec = Math.floor(parseFloat(sec));
-      return {
-        text,
-        time: min * 60 + sec
+      const time = min * 60 + sec;
+      if (time >= lastTime) {
+        console.log('√')
+        lastTime = time;
+        resArr.push({ text, time });
       }
-    });
+      return resArr
+    },[]);
     dispatch({ type: 'addSong', data: { song: res.data.songs[0], lyric: lyricArr } })
   }
 }

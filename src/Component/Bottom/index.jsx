@@ -14,7 +14,7 @@ export default class Bottom extends Component {
           mode={this.props.mode}
           songSrc={this.props.songSrc}
         />
-        <Func showPlayList={this.props.showPlayList} />
+        <Func togglePlayList={this.props.togglePlayList} />
       </div>
     );
   }

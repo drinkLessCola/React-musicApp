@@ -24,6 +24,7 @@
   --box-shadow-color:#dfdfdf;
   --progress-color:#eee;
   --controller-color:#fff;
+  --lyric-color:#666;
 
   --sound-bar-height: 40px;
   --progress-bar-width: 0px;
@@ -81,6 +82,7 @@ body[data-theme="dark"] {
   --box-shadow-color:#111;
   --controller-color:#333;
   --btn-dark-color:#e63f53;
+  --lyric-color:#aaa;
 }
 
 * {

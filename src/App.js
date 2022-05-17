@@ -13,6 +13,7 @@ import { getLoginStateAction } from './Redux/searchActions';
 import ThemeContext from './Context/ThemeContext';
 import MenuContext from './Context/MenuContext';
 import Menu from './Component/Menu';
+import { addNewSongAction } from './Redux/songActions';
 
 function App(props) {
   console.log('--------APP render---------')
@@ -37,15 +38,34 @@ function App(props) {
 
   const [theme, setTheme] = React.useState('light')
   const [showContextMenu, setShowContextMenu] = React.useState(false)
+  const [showPlaylist, setShowPlaylist] = React.useState(false)
   const [coord, setCoord] = React.useState({x:0, y:0})
   const [menuItems, setMenuItems] = React.useState(null);
+  const [menuId, setMenuId] = React.useState(null);
+
+  const handleMenuClick = (e) => {
+    const func = e.target.closest('li').dataset.func;
+    const {addSongToPlaylist} = props;
+    console.log('menuId', menuId)
+    switch(func){
+      case 'play':
+        addSongToPlaylist(menuId)
+        break;
+      case 'playNext':
+        //addSongToPlaylistNext(menuId)
+        break;
+      case 'collectToList':
+        break;
+    }
+  }
   const menu = useRef(null);
-  const MemoMenu = React.useMemo(() => <Menu ref={menu}>{menuItems}</Menu>,[menuItems])
+  const MemoMenu = React.useMemo(() => <Menu ref={menu} handleMenuClick={handleMenuClick}>{menuItems}</Menu>,[menuItems, menuId])
   
   useEffect(() => {
     console.log(menu)
     console.log(MemoMenu)
     console.log(showContextMenu);
+    console.log('让我看看id更新了吗？', menuId)
     if(menu.current){
       menu.current.style.left = coord.x + 'px';
       menu.current.style.top = coord.y + 'px';
@@ -65,6 +85,11 @@ function App(props) {
    */
   function toggleMenu (menuItems, e){
     e.preventDefault();
+    const target = e.target.closest('tr, li')
+    console.log(target);
+    const id = props.playlist.songs[target.id]?.id || target.dataset.id
+    console.log('@#toggleMenu - id', id)
+    setMenuId(id);
     setShowContextMenu(true);
     setCoord({
       x:e.clientX,
@@ -72,11 +97,8 @@ function App(props) {
     })
     setMenuItems(menuItems);
   }
-  function showPlayList() {
-    const { isPlayListShowing } = state;
-    setState({
-      isPlayListShowing: !isPlayListShowing,
-    });
+  function togglePlayList() {
+    setShowPlaylist((showState) => !showState);
   }
   function showLogin(){
     setState({showLogin:true});
@@ -92,10 +114,13 @@ function App(props) {
   }
   function handleClick(event){
     const target = event.target.closest('.PlayListBoard');
-    if (target || !state.isPlayListShowing) return;
-    setState({
-      isPlayListShowing: false,
-    });
+    if (target) return;
+    if(state.isPlayListShowing){
+      setState({
+        isPlayListShowing: false,
+      });
+    }
+    setShowContextMenu(false);
   }
   console.log(state.showLogin)
   // React.useState
@@ -107,11 +132,11 @@ function App(props) {
       <MenuContext.Provider value={{toggleMenu}}>
         <div className="main">
           {React.useMemo(() => <SideBar list={props.playlist} /> ,[props.playList])}
-          <Main />
+          <Main showPlaylist={showPlaylist}/>
         </div>
       </MenuContext.Provider>
       {React.useMemo(() => <Bottom
-        showPlayList={showPlayList}
+        togglePlayList={togglePlayList}
         changeMode={changeMode}
         mode={state.mode}
         songSrc={state.songSrc}
@@ -121,10 +146,7 @@ function App(props) {
       {showContextMenu && MemoMenu}
     </div>
   );
-
 }
-
-
 
 
 // 花括号外层要包裹小括号
@@ -135,6 +157,7 @@ export default connect(
     playlist:state.playlist,
   }),
   {
-    getLoginState:getLoginStateAction
+    getLoginState:getLoginStateAction,
+    addSongToPlaylist:addNewSongAction
   }
 )(App)
